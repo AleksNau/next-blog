@@ -11,10 +11,20 @@
 }
 
 .ball {
+  margin: 0;
   width: 15px;
   height: 15px;
   border-radius: 50%;
   background-color: #fff;
   position: absolute;
+  transition:all 1s linear;}
+
+.ballright {
+  background-color:#ffffff;
+  right: 1px;
+}
+
+.ballleft {
+  background-color:#0f172a;
   left: 1px;
 }
