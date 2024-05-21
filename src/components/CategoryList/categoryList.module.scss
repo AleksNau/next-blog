@@ -1,3 +1,67 @@
 .container {
 
 }
+
+.title {
+  margin: 50px 0;
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 15%;
+  height: 80px;
+  justify-content: center;
+  text-transform: capitalize;
+  border-radius: 10px;
+}
+
+.category.style {
+  background-color: #57c4ff31;
+}
+
+.category.travel {
+  background-color: rgba(100, 90, 171, 0.13);
+}
+
+.category.culture {
+  background-color: rgba(185, 248, 122, 0.19);
+}
+
+.image {
+  border-radius: 50%;
+}
+
+
+@media screen and (max-width: 1280px){
+  .category {
+    width: 20%;
+  }
+}
+
+@media screen and (max-width: 1024px){
+  .category {
+    width: 25%;
+  }
+}
+
+@media screen and (max-width: 768px){
+  .category {
+    width: 35%;
+  }
+
+}
+
+@media screen and (max-width: 640px){
+  .category {
+    width: 100%;
+  }
+}
