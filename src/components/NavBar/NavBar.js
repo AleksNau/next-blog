@@ -17,9 +17,9 @@ const NavBar = () => {
         <div className={s.logo}> lamablog</div>
         <div className={s.links}>
             <ThemeToggle/>
-            <Link href={'/'}>Homepage</Link>
-            <Link href={'/'}>Contact</Link>
-            <Link href={'/'}>About</Link>
+            <Link href={'/'} className={s.link}>Homepage</Link>
+            <Link href={'/'} className={s.link}>Contact</Link>
+            <Link href={'/'} className={s.link}>About</Link>
             <AuthLinks/>
         </div>
     </div>
