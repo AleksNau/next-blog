@@ -3,7 +3,7 @@ import s from "./blog.module.scss";
 import CardList from "@/components/Cardlist/CardList";
 import Menu from "@/components/Menu/Menu";
 
-const page = () => {
+const Blog = () => {
     return (
         <div className={s.container}>
             <h1 className={s.title}>Style Blog</h1>
@@ -15,4 +15,4 @@ const page = () => {
     );
 };
 
-export default page;
+export default Blog;
