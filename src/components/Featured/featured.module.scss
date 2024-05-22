@@ -55,11 +55,12 @@
 }
 
 @media screen and (max-width: 1024px){
+
   .title {
     font-size: 64px;
   }
-
-  .image {
+//поменять на дирекшн колумн
+  .imgContainer {
     display: none;
   }
 }
