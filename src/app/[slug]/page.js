@@ -2,6 +2,7 @@ import React from 'react';
 import s from "./singlePage.module.scss";
 import Menu from "@/components/Menu/Menu";
 import Image from "next/image";
+import Comments from "@/components/Comments/Comments";
 
 const SinglePage = () => {
     return (
@@ -30,6 +31,10 @@ const SinglePage = () => {
                         <h2>Lorem ipsum dolor sit amet</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                    </div>
+                    <div className={s.comment}>
+                        <Comments/>
+
                     </div>
                 </div>
                 <Menu/>
