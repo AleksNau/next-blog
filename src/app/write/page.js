@@ -28,7 +28,7 @@ const WritePage = () => {
                         <Image src={'/video.png'} className={s.plus} width={16} height={16}/>
                     </button>
                 </div>)}
-                <ReactQuill theme='bubble' value={value} onChange={setValue} placeHolder={'Tell your story'}></ReactQuill>
+                <ReactQuill className={s.textArea} theme='bubble' value={value} onChange={setValue} placeHolder={'Tell your story'}></ReactQuill>
             </div>
         </div>
     );
