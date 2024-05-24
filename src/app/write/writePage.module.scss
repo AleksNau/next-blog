@@ -6,13 +6,10 @@
   display: flex;
   gap: 20px;
   height: 700px;
+  position: relative;
 }
 
-.textArea {
-  width: 100%;
-}
-
-.button.addButton {
+.button {
   width: 36px;
   height: 36px;
   border-radius: 50%;
@@ -24,6 +21,31 @@
   cursor: pointer;
 }
 
+.publish {
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1a8917;
+  color: white;
+}
+
+
+.addButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--textColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+
 .addButton {
   border-color: #1a8917;
 }
@@ -34,4 +56,26 @@
   background-color: var(--bg);
   position: absolute;
   z-index: 999;
+}
+
+.input {
+  padding: 50px;
+  font-size: 64px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.input::placeholder {
+  color: #b3b3b1;
+}
+
+
+.textArea {
+  background-color: transparent;
+  width: 100%;
+}
+
+.textArea::placeholder {
+  color: #b3b3b1;
 }
