@@ -1,7 +1,7 @@
 import './globals.css'
 import {Inter} from 'next/font/google'
-import NavBar from "@/components/NavBar/NavBar";
-import Footer from "@/components/Footer/Footer";
+import NavBar from '../components/NavBar/NavBar'
+import Footer from "../components/Footer/Footer";
 import {ThemeContextProvider} from "@/context/ThemeContext";
 
 /*import ThemeProvider from "@/providers/ThemeProvider"; использую провайдер2 за место так как не работает*/
