@@ -2,11 +2,12 @@
 import React, {useState} from 'react';
 import s from "./authLinks.module.scss";
 import Link from "next/link";
+import {SignOut} from "@/app/utils/signout";
 
 const AuthLinks = () => {
     const [open,setOpen] = useState(false);
     //notauthonticated
-    const status= false;
+    const status= true;
 
     return (
         <>
@@ -30,7 +31,7 @@ const AuthLinks = () => {
                     {status===false ? (<Link href={'/login'}>Login</Link>)
                         : (<>
                             <Link href={'/write'}>Write</Link>
-                            <span>Logout</span>
+                            <span onClick={()=>SignOut()}>Logout</span>
                         </>)}
                 </div> ) }
         </>
