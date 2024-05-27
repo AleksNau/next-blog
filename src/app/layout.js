@@ -7,6 +7,7 @@ import {ThemeContextProvider} from "@/context/ThemeContext";
 /*import ThemeProvider from "@/providers/ThemeProvider"; использую провайдер2 за место так как не работает*/
 
 import dynamic from 'next/dynamic'
+import AuthProvider from "@/providers/AuthProvider";
 
 const ThemeContextProvider2 = dynamic(() => import("@/providers/ThemeProvider"), {
     ssr: false,
@@ -23,6 +24,7 @@ export default function RootLayout({children}) {
     return (
         <html lang="en">
         <body className={inter.className}>
+        <AuthProvider>
         <ThemeContextProvider>
             <ThemeContextProvider2>
                 <div className={'container'}>
@@ -35,6 +37,7 @@ export default function RootLayout({children}) {
                 </div>
             </ThemeContextProvider2>
         </ThemeContextProvider>
+        </AuthProvider>
         </body>
         </html>
     )
