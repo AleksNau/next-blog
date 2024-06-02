@@ -1,14 +1,25 @@
 'use client';
-import React from 'react';
+import React, {useEffect} from 'react';
 import s from "./loginPage.module.scss";
 import {SignIn} from '../utils/signin'
 import {useSession} from "next-auth/react";
+import {useRouter} from "next/navigation";
 
 
 
 const LoginPage = () => {
     const {data,status} = useSession()
-    console.log(data,status)
+
+    const router = useRouter()
+
+
+    useEffect(() => {
+
+        if (status === 'authenticated') {
+            router.push('/')
+        }
+    }, [status]);
+
     return (
         <div className={s.container}>
 <div className={s.wrapper}>

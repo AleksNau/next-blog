@@ -1,6 +1,10 @@
 'use server'
-import {signOut} from "@/auth";
+import {signOut,auth} from "@/auth";
+
+
 
 export async function SignOut() {
-    return await signOut('google')
+
+    return await signOut({ callbackUrl: "/api/auth/logout"});
 }
+

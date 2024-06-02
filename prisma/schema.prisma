@@ -1,8 +1,9 @@
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
   directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
 }
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,8 +19,10 @@ model User {
   // Optional for WebAuthn support
   Authenticator Authenticator[]
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Post      Post[]
+  Comment   Comment[]
 }
 
 model Account {
@@ -75,4 +78,37 @@ model Authenticator {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@id([userId, credentialID])
+}
+
+model Category {
+  id    String  @id @default(cuid())
+  slug  String  @unique
+  title String
+  img   String?
+  Posts Post[]
+}
+
+model Post {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  slug      String    @unique
+  title     String
+  desc      String
+  img       String?
+  views     Int       @default(0)
+  catSlug   String
+  cat       Category  @relation(fields: [catSlug], references: [slug])
+  userEmail String
+  user      User      @relation(fields: [userEmail], references: [email])
+  comments  Comment[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  desc      String
+  userEmail String
+  user      User     @relation(fields: [userEmail], references: [email])
+  postSlug  String
+  post      Post     @relation(fields: [postSlug], references: [slug])
 }
