@@ -3,35 +3,35 @@ import s from "./categoryList.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 
-const CategoryList = () => {
+const getData = async () => {
+  const res = await fetch('http://localhost:3000/api/categories',{cache:'no-store'});
+
+  if (!res.ok){
+      throw new Error('Не та категория')
+  }
+
+  return res.json()
+}
+
+
+const CategoryList = async () => {
+
+    const data = await getData();
     return (
         <div className={s.container}>
             <h1 className={s.title}>Popular Categories</h1>
             <div className={s.categories}>
-                <Link href={'/pages?cat=style'} className={`${s.category} ${s.style}`}>
-                    <Image src={'/style.png'} width={32} height={32} className={s.image}/>
-                    Style
-                </Link>
-                <Link href={'/pages?cat=style'} className={`${s.category} ${s.travel}`}>
-                    <Image src={'/travel.png'} width={32} height={32} className={s.image}/>
-                    Travel
-                </Link>
-                <Link href={'/pages?cat=style'} className={`${s.category} ${s.culture}`}>
-                    <Image src={'/culture.png'} width={32} height={32} className={s.image}/>
-                    Culture
-                </Link>
-                <Link href={'/pages?cat=style'} className={`${s.category} ${s.style}`}>
-                    <Image src={'/style.png'} width={32} height={32} className={s.image}/>
-                    Style
-                </Link>
-                <Link href={'/pages?cat=style'} className={`${s.category} ${s.travel}`}>
-                    <Image src={'/travel.png'} width={32} height={32} className={s.image}/>
-                    Travel
-                </Link>
-                <Link href={'/pages?cat=style'} className={`${s.category} ${s.culture}`}>
-                    <Image src={'/culture.png'} width={32} height={32} className={s.image}/>
-                    Culture
-                </Link>
+                {data.map((item) => {
+                   return (<Link key={item.id} href={'/pages?cat=style'}
+                          className={`${s.category} ${s[item.title]}`}>
+                        <Image src={item.img} width={32} height={32} className={s.image} alt={item.title}/>
+                        {item.title}
+                    </Link>)
+
+                })}
+
+
+
             </div>
 
         </div>

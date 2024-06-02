@@ -4,17 +4,32 @@ import Pagination from "@/components/Pagination/Pagination";
 import Image from "next/image";
 import Card from "@/components/Card/Card";
 
-const CardList = () => {
+
+const getData = async (page) => {
+    const res = await fetch(`http://localhost:3000/api/posts?page=${page}`,{cache:'no-store'});
+
+    if (!res.ok){
+        throw new Error('Нет постов')
+    }
+
+    return res.json()
+}
+
+const CardList = async ({page}) => {
+    const data = await getData(page);
+    console.log('data :' + page)
     return (
         <div className={s.container}>
             <h1 className={s.title}>Recent Posts</h1>
             <div className={s.posts}>
-                <Card/>
-                <Card/>
-                <Card/>
-                <Card/>
+
+
+                {data?.map(item => {
+                    return(<Card key={item.id} title={item.title} category={item.catSlug} desc={item.desc}/> )
+                })}
+
             </div>
-            <Pagination/>
+            <Pagination page={page}/>
         </div>
     );
 };
