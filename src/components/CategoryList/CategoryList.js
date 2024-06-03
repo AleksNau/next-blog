@@ -21,14 +21,15 @@ const CategoryList = async () => {
         <div className={s.container}>
             <h1 className={s.title}>Popular Categories</h1>
             <div className={s.categories}>
-                {data.map((item) => {
-                   return (<Link key={item.id} href={'/pages?cat=style'}
+                {data.map(item => {
+                   return (
+                       <Link key={item.id} href={'/pages?cat=style'}
                           className={`${s.category} ${s[item.title]}`}>
                         <Image src={item.img} width={32} height={32} className={s.image} alt={item.title}/>
                         {item.title}
                     </Link>)
 
-                })}
+               }) }
 
 
 
