@@ -29,7 +29,7 @@ const CardList = async ({page}) => {
 
 
                 {posts?.map(item => {
-                    return(<Card key={item.id} title={item.title} category={item.catSlug} desc={item.desc}/> )
+                    return(<Card key={item.id} title={item.title} category={item.catSlug} desc={item.desc} item={item}/> )
                 })}
 
             </div>
