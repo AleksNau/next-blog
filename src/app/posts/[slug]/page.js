@@ -1,11 +1,16 @@
+
 import React from 'react';
 import s from "./singlePage.module.scss";
 import Menu from "@/components/Menu/Menu";
 import Image from "next/image";
 import Comments from "@/components/Comments/Comments";
-const getData = async (query) => {
-    console.log("get data  " +query)
-    const res = await fetch(`http://localhost:3000/api/posts/${query}`,{cache:'no-store'});
+
+
+
+
+const getData = async (slug) => {
+    console.log("get data  " +slug)
+    const res = await fetch(`http://localhost:3000/api/posts/${slug}`,{cache:'no-store'});
 
     if (!res.ok){
         throw new Error('Нет такого поста')
@@ -15,15 +20,15 @@ const getData = async (query) => {
 }
 
 
-const SinglePage = async (params) => {
+const SinglePage = async ({ params: { slug } }) => {
     //тут один пост по запросу
-    const data = await getData(params.params.slug);
+    const data = await getData(slug);
 
     return (
         <div className={s.container}>
             <div className={s.infoContainer}>
                 <div className={s.textContainer}>
-                    <h1 className={s.title}>Страница поста</h1>
+                    <h1 className={s.title}>{data.title}</h1>
                     <div className={s.user}>
                         <div className={s.userImageContainer}>
                             <Image src={'/p1.jpeg'} alt={'img'} fill className={s.avatar}/>
