@@ -7,7 +7,6 @@ import {ThemeContext} from "@/context/ThemeContext";
 
 const ThemeToggle = () => {
     const {theme, toggle} = useContext(ThemeContext)
-console.log(theme)
 
     return (
         <div className={s.container} onClick={toggle} style={theme==='dark'?{backgroundColor:"#ffffff"}:{backgroundColor:"#0f172a"}}>

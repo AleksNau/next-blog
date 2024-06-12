@@ -6,7 +6,6 @@ import prisma from "@/lib/prisma";
 export const GET = async (request, { params }) => {
     const slug = params.slug
 
-    console.log('роут '+slug)
     try {
         const post = await prisma.post.findUnique({
             where: {

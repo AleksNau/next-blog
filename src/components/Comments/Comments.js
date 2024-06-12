@@ -1,32 +1,67 @@
-import React from 'react';
+'use client'
+import React, {useState} from 'react';
 import s from "./comments.module.scss";
 import Link from "next/link";
 import Image from "next/image";
+import useSWR from "swr";
+import {useSession} from "next-auth/react";
 
-const Comments = () => {
-    const status = "authenticated"
+const fetcher = async (url) => {
+    const res =await fetch(url);
+    const data = await res.json();
+    if (!res) {
+        const error = new Error(data.message);
+        throw error;
+    }
+    return data;
+}
+
+
+
+const Comments = ({postSlug}) => {
+    const {status} = useSession();
+    const {data,mutate,isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`,fetcher);
+
+
+    const [desc,setDesc] = useState("")
+
+    const handleSubmit = async () => {
+        console.log("прошло1"+desc)
+        await fetch("/api/comments",{
+            method:"POST",
+            body: JSON.stringify({desc, postSlug})
+        });
+        mutate();
+        console.log("прошло"+postSlug)
+    }
+
 
     return (
         <div className={s.container}>
             <h2 className={s.title}></h2>
+            <div className={s.comments}>
             {status === 'authenticated' ? (
                 <div className={s.write}>
-                    <textarea className={s.input} placeholder='write a comment'/>
-                    <button className={s.button}>Send</button>
+                    <textarea className={s.input} placeholder='write a comment' onChange={e => setDesc(e.target.value)}/>
+                    <button className={s.button} onClick={() => handleSubmit()}>Send</button>
                 </div>
             ) :(<Link href={'/'}>Login to write a comment</Link>)
             }
-            <div className={s.comments}>
-                <div className={s.comment}>
-                    <div className={s.user}>
-                        <Image src={'/p1.jpeg'} width={50} height={50} className={s.image}/>
-                        <div className={s.userInfo}>
-                            <span className={s.username}>John Doe</span>
-                            <span className={s.date}>01.03.2024</span>
+            {isLoading ? ("Loading") : (data.map((item) => {
+                return (
+
+                    <div className={s.comment} key={item.id}>
+                        <div className={s.user}>
+                            <Image src={'/p1.jpeg'} width={50} height={50} className={s.image}/>
+                            <div className={s.userInfo}>
+                                <span className={s.username}>{item.user.name}</span>
+                                <span className={s.date}>{item.createdAt}</span>
+                            </div>
                         </div>
+                        <p className={s.desc}>{item.desc}</p>
                     </div>
-                    <p className={s.desc}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur doloremque natus quam. Ab, culpa cupiditate dolores et ex, excepturi facere ipsum, iure labore molestias nulla odio quibusdam quod saepe ullam!</p>
-                </div>
+                )
+            }))}
             </div>
             <div></div>
         </div>

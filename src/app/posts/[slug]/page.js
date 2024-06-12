@@ -9,7 +9,6 @@ import Comments from "@/components/Comments/Comments";
 
 
 const getData = async (slug) => {
-    console.log("get data  " +slug)
     const res = await fetch(`http://localhost:3000/api/posts/${slug}`,{cache:'no-store'});
 
     if (!res.ok){
@@ -19,7 +18,7 @@ const getData = async (slug) => {
     return res.json()
 }
 
-
+//Страница поста
 const SinglePage = async ({ params: { slug } }) => {
     //тут один пост по запросу
     const data = await getData(slug);
@@ -52,7 +51,7 @@ const SinglePage = async ({ params: { slug } }) => {
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
                     </div>
                     <div className={s.comment}>
-                        <Comments/>
+                        <Comments postSlug={slug}/>
 
                     </div>
                 </div>
