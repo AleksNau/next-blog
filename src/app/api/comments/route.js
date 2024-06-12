@@ -32,7 +32,6 @@ export const GET = async (request) => {
 //create a comment
 
 export const POST = async (request) => {
-    const {searchParams} = new URL(request.url)
 
     const session = await auth()
     console.log("session"+session)
