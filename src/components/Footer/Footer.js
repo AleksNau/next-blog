@@ -8,7 +8,7 @@ const Footer = () => {
         <div className={s.container}>
             <div className={s.info}>
                 <div className={s.logo}>
-                    <Image src={'/logo.png'} alt={'logo'} width={50} height={50}></Image>
+                    <Image src={'/logo.png'} alt={'logo'} width={50} height={50}/>
                     <h2 className={s.logoText}>Lamablog</h2>
                 </div>
                 <p className={s.desc}>

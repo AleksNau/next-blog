@@ -30,9 +30,6 @@ const CategoryList = async () => {
                     </Link>)
 
                }) }
-
-
-
             </div>
 
         </div>

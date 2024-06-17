@@ -27,7 +27,6 @@ const CardList = async ({page}) => {
             <h1 className={s.title}>Recent Posts</h1>
             <div className={s.data}>
 
-
                 {posts?.map(item => {
                     return(<Card key={item.id} title={item.title} category={item.catSlug} desc={item.desc} item={item}/> )
                 })}

@@ -20,7 +20,6 @@ const AuthLinks = () => {
                     <Link href={'/write'} className={s.link}>Write</Link>
                     <span className={s.link} onClick={()=> {
                         signOut()
-
                     }}>Logout</span>
                 </>)}
 

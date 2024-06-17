@@ -26,13 +26,11 @@ const Comments = ({postSlug}) => {
     const [desc,setDesc] = useState("")
 
     const handleSubmit = async () => {
-        console.log("прошло1"+desc)
         await fetch("/api/comments",{
             method:"POST",
             body: JSON.stringify({desc, postSlug})
         });
         mutate();
-        console.log("прошло"+postSlug)
     }
 
 
