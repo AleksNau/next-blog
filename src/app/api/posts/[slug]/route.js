@@ -11,6 +11,9 @@ export const GET = async (request, { params }) => {
             where: {
                 id: slug,
             },
+            include: {
+                user:true,
+            }
         });
 
         return new NextResponse(JSON.stringify(post, {status_: 200}))

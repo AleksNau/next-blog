@@ -9,25 +9,33 @@ const Footer = () => {
             <div className={s.info}>
                 <div className={s.logo}>
                     <Image src={'/logo.png'} alt={'logo'} width={50} height={50}/>
-                    <h2 className={s.logoText}>Lamablog</h2>
+                    <h2 className={s.logoText}>Настолки FUN</h2>
                 </div>
                 <p className={s.desc}>
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores autem, consequuntur, ea earum expedita explicabo inventore ipsam laboriosam minus molestiae optio quas, quibusdam quos repudiandae rerum voluptas voluptatum! Eaque.
                 </p>
                 <div className={s.icons}>
-                <Image src={'/facebook.png'} alt={'icon'} width={18} height={18}/>
-                <Image src={'/instagram.png'} alt={'icon'} width={18} height={18}/>
-                <Image src={'/tiktok.png'} alt={'icon'} width={18} height={18}/>
-                <Image src={'/youtube.png'} alt={'icon'} width={18} height={18}/>
+                    <Link href={"https://www.facebook.com/"} target={"_blank"}>
+                        <Image className={s.image} src={'/facebook.png'} alt={'icon'} width={18} height={18}/>
+                    </Link>
+                    <Link href={"https://www.instagram.com/"} target={"_blank"}>
+                        <Image className={s.image} src={'/instagram.png'} alt={'icon'} width={18} height={18}/>
+                    </Link>
+                    <Link href={"https://www.tiktok.com/"} target={"_blank"}>
+                        <Image className={s.image} src={'/tiktok.png'} alt={'icon'} width={18} height={18}/>
+                    </Link>
+                    <Link href={"https://m.youtube.com/?gl=RU&hl=ru"} target={"_blank"}>
+                        <Image className={s.image} src={'/youtube.png'} alt={'icon'} width={18} height={18}/>
+                    </Link>
                 </div>
             </div>
             <div className={s.links}>
                 <div className={s.list}>
                     <span className={s.listTitle}>Links</span>
-                    <Link className={s.linkItem} href={'/'}>Home</Link>
-                    <Link className={s.linkItem} href={'/'}>About</Link>
-                    <Link className={s.linkItem} href={'/'}>Blog</Link>
-                    <Link className={s.linkItem} href={'/'}>Contacts</Link>
+                    <Link className={s.linkItem} href={'/'}>Главная</Link>
+                    <Link className={s.linkItem} href={'/'}>О нас</Link>
+                    <Link className={s.linkItem} href={'/'}>Блог</Link>
+                    <Link className={s.linkItem} href={'/'}>Контакты</Link>
                 </div>
                 <div className={s.list}>
                     <span className={s.listTitle}>Tags</span>
@@ -38,10 +46,10 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores au
                 </div>
                 <div className={s.list}>
                     <span className={s.listTitle}>Social</span>
-                    <Link className={s.linkItem} href={'/'}>Facebook</Link>
-                    <Link className={s.linkItem} href={'/'}>Instagram</Link>
-                    <Link className={s.linkItem} href={'/'}>Tiktok</Link>
-                    <Link className={s.linkItem} href={'/'}>Youtube</Link>
+                    <Link className={s.linkItem} href={"https://www.facebook.com/"} target={"_blank"}>Facebook</Link>
+                    <Link className={s.linkItem} href={"https://www.instagram.com/"} target={"_blank"}>Instagram</Link>
+                    <Link className={s.linkItem} href={"https://www.tiktok.com/"} target={"_blank"}>Tiktok</Link>
+                    <Link className={s.linkItem} href={"https://m.youtube.com/?gl=RU&hl=ru"} target={"_blank"}>Youtube</Link>
                 </div>
             </div>
         </div>

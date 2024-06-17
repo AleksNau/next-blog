@@ -8,18 +8,18 @@ import MenuCategories from "@/components/MenuCategories/MenuCategories";
 const Menu = () => {
     return (
         <div className={s.container}>
-            <h2 className={s.subtitle}>Chosen by editor</h2>
-            <h1 className={s.title}>Editors Pick</h1>
+            <h2 className={s.subtitle}>От авторов</h2>
+            <h1 className={s.title}>Выбор автора</h1>
            <MenuPosts withImage={false}/>
 
             {/* categories*/}
-            <h2 className={s.subtitle}>Discover by topic</h2>
-            <h1 className={s.title}>Categories</h1>
+            <h2 className={s.subtitle}>Поиск по теме</h2>
+            <h1 className={s.title}>Категории</h1>
 <MenuCategories/>
 
             {/* whats hot*/}
-            <h2 className={s.subtitle}>Whats hot</h2>
-            <h1 className={s.title}>Most Popular</h1>
+            <h2 className={s.subtitle}>Обсуждаемое</h2>
+            <h1 className={s.title}>Самое популярное</h1>
             <MenuPosts withImage={true}/>
         </div>
     );

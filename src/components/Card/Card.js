@@ -4,7 +4,7 @@ import React from "react";
 import Link from "next/link";
 
 const Card = ({title,category,desc,item}) => {
-console.log(item.id)
+
     return (
         <div className={s.container}>
             <div className={s.imageContainer}>

@@ -11,6 +11,11 @@
   color: white;
   cursor: pointer;
   border-radius: 6px;
+  transition: opacity 400ms linear;
+}
+
+.button:not(:disabled):hover {
+  opacity: 0.8;
 }
 
 .button:disabled {

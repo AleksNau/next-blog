@@ -29,7 +29,6 @@ export default function RootLayout({children}) {
             <ThemeContextProvider2>
                 <div className={'container'}>
                     <div className="wrapper">
-
                         <NavBar/>
                         {children}
                         <Footer/>

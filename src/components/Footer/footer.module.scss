@@ -52,6 +52,19 @@ margin-top: 50px;
   font-weight: bold;
 }
 
+.image {
+  cursor: pointer;
+  transition-duration: 300ms;
+}
+
+.linkItem {
+  cursor: pointer;
+}
+
+
+.image:hover {
+  transform: scale(1.2);
+}
 @media screen and (max-width: 1024px){
  .links {
    gap: 50px;

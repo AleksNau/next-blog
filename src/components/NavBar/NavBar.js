@@ -9,17 +9,25 @@ const NavBar = () => {
     return (
     <div className = {s.container} >
         <div className={s.social}>
-            <Image src={'/facebook.png'} alt={'alt'} width={24} height={24}/>
-            <Image src={'/instagram.png'} alt={'alt'} width={24} height={24}/>
-            <Image src={'/tiktok.png'} alt={'alt'} width={24} height={24}/>
-            <Image src={'/youtube.png'} alt={'alt'} width={24} height={24}/>
+            <Link href={"https://www.facebook.com/"} target={"_blank"}>
+                <Image className={s.image} src={'/facebook.png'} alt={'facebook'} width={24} height={24}/>
+            </Link>
+            <Link href={"https://www.instagram.com/"} target={"_blank"}>
+                <Image className={s.image} src={'/instagram.png'} alt={'instagram'} width={24} height={24}/>
+            </Link>
+            <Link href={"https://www.tiktok.com/"} target={"_blank"}>
+                <Image className={s.image} src={'/tiktok.png'} alt={'tiktok'} width={24} height={24}/>
+            </Link>
+            <Link href={"https://m.youtube.com/?gl=RU&hl=ru"} target={"_blank"}>
+                <Image className={s.image} src={'/youtube.png'} alt={'youtube'} width={24} height={24}/>
+            </Link>
         </div>
-        <div className={s.logo}> lamablog</div>
+        <div className={s.logo}>Настолки FUN</div>
         <div className={s.links}>
             <ThemeToggle/>
-            <Link href={'/'} className={s.link}>Homepage</Link>
-            <Link href={'/'} className={s.link}>Contact</Link>
-            <Link href={'/'} className={s.link}>About</Link>
+            <Link href={'/'} className={s.link}>Главная</Link>
+            <Link href={'/'} className={s.link}>Контакты</Link>
+            <Link href={'/'} className={s.link}>О нас</Link>
             <AuthLinks/>
         </div>
     </div>
