@@ -10,12 +10,12 @@ const Menu = () => {
         <div className={s.container}>
             <h2 className={s.subtitle}>От авторов</h2>
             <h1 className={s.title}>Выбор автора</h1>
-           <MenuPosts withImage={false}/>
+            <MenuPosts withImage={false}/>
 
             {/* categories*/}
             <h2 className={s.subtitle}>Поиск по теме</h2>
             <h1 className={s.title}>Категории</h1>
-<MenuCategories/>
+            <MenuCategories/>
 
             {/* whats hot*/}
             <h2 className={s.subtitle}>Обсуждаемое</h2>

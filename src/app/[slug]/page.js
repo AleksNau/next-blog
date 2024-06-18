@@ -10,7 +10,7 @@ const SinglePage = async () => {
         <div className={s.container}>
             <div className={s.infoContainer}>
                 <div className={s.textContainer}>
-                    <h1 className={s.title}>главная</h1>
+                    <h1 className={s.title}>Главная</h1>
                     <div className={s.user}>
                         <div className={s.userImageContainer}>
                             <Image src={'/p1.jpeg'} alt={'img'} fill className={s.avatar}/>
@@ -28,10 +28,16 @@ const SinglePage = async () => {
             <div className={s.content}>
                 <div className={s.post}>
                     <div className={s.desc}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
+                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
+                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
                         <h2>Lorem ipsum dolor sit amet</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
+                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
+                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
+                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
+                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
                     </div>
                     <div className={s.comment}>
                         <Comments/>

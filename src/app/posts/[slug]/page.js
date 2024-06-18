@@ -1,4 +1,3 @@
-
 import React from 'react';
 import s from "./singlePage.module.scss";
 import Menu from "@/components/Menu/Menu";
@@ -6,12 +5,10 @@ import Image from "next/image";
 import Comments from "@/components/Comments/Comments";
 
 
-
-
 const getData = async (slug) => {
-    const res = await fetch(`http://localhost:3000/api/posts/${slug}`,{cache:'no-store'});
+    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {cache: 'no-store'});
 
-    if (!res.ok){
+    if (!res.ok) {
         throw new Error('Нет такого поста')
     }
 
@@ -19,7 +16,7 @@ const getData = async (slug) => {
 }
 
 //Страница поста
-const SinglePage = async ({ params: { slug } }) => {
+const SinglePage = async ({params: {slug}}) => {
     //тут один пост по запросу
     const data = await getData(slug);
 
@@ -45,10 +42,16 @@ const SinglePage = async ({ params: { slug } }) => {
             <div className={s.content}>
                 <div className={s.post}>
                     <div className={s.desc}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
+                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
+                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
                         <h2>Lorem ipsum dolor sit amet</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
+                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
+                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
+                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
+                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
                     </div>
                     <div className={s.comment}>
                         <Comments postSlug={slug}/>

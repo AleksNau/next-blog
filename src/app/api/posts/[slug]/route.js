@@ -3,16 +3,16 @@ import prisma from "@/lib/prisma";
 
 
 //SINGLE POST
-export const GET = async (request, { params }) => {
+export const GET = async (request, {params}) => {
     const slug = params.slug
 
     try {
         const post = await prisma.post.findUnique({
             where: {
-                id: slug,
+                slug: slug,
             },
             include: {
-                user:true,
+                user: true,
             }
         });
 

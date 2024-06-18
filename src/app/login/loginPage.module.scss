@@ -1,5 +1,5 @@
 .container {
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   margin-top: 60px;
@@ -38,13 +38,13 @@ display: flex;
   background-color: #087BEA;
 }
 
-@media screen and (max-width: 768px){
-.wrapper {
-  padding: 50px 100px;
-}
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 50px 100px;
+  }
 }
 
-@media screen and (max-width: 640px){
+@media screen and (max-width: 640px) {
   .wrapper {
     padding: 30px;
   }

@@ -12,7 +12,9 @@ const Footer = () => {
                     <h2 className={s.logoText}>Настолки FUN</h2>
                 </div>
                 <p className={s.desc}>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores autem, consequuntur, ea earum expedita explicabo inventore ipsam laboriosam minus molestiae optio quas, quibusdam quos repudiandae rerum voluptas voluptatum! Eaque.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores autem, consequuntur,
+                    ea earum expedita explicabo inventore ipsam laboriosam minus molestiae optio quas, quibusdam quos
+                    repudiandae rerum voluptas voluptatum! Eaque.
                 </p>
                 <div className={s.icons}>
                     <Link href={"https://www.facebook.com/"} target={"_blank"}>
@@ -49,7 +51,8 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores au
                     <Link className={s.linkItem} href={"https://www.facebook.com/"} target={"_blank"}>Facebook</Link>
                     <Link className={s.linkItem} href={"https://www.instagram.com/"} target={"_blank"}>Instagram</Link>
                     <Link className={s.linkItem} href={"https://www.tiktok.com/"} target={"_blank"}>Tiktok</Link>
-                    <Link className={s.linkItem} href={"https://m.youtube.com/?gl=RU&hl=ru"} target={"_blank"}>Youtube</Link>
+                    <Link className={s.linkItem} href={"https://m.youtube.com/?gl=RU&hl=ru"}
+                          target={"_blank"}>Youtube</Link>
                 </div>
             </div>
         </div>

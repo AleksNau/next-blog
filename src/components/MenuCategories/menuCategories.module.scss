@@ -1,5 +1,5 @@
 .categoryList {
-margin-top: 35px;
+  margin-top: 35px;
   margin-bottom: 60px;
   display: flex;
   flex-wrap: wrap;
@@ -11,7 +11,7 @@ margin-top: 35px;
   border-radius: 10px;
   font-size: 14px;
   cursor: pointer;
-  transition:opacity 400ms linear;
+  transition: opacity 400ms linear;
 }
 
 .categoryItem:hover {

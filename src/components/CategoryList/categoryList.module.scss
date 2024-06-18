@@ -26,7 +26,7 @@
 }
 
 .category:hover {
-opacity: 0.8;
+  opacity: 0.8;
 }
 
 .category.style {
@@ -46,26 +46,26 @@ opacity: 0.8;
 }
 
 
-@media screen and (max-width: 1280px){
+@media screen and (max-width: 1280px) {
   .category {
     width: 20%;
   }
 }
 
-@media screen and (max-width: 1024px){
+@media screen and (max-width: 1024px) {
   .category {
     width: 25%;
   }
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 768px) {
   .category {
     width: 35%;
   }
 
 }
 
-@media screen and (max-width: 640px){
+@media screen and (max-width: 640px) {
   .category {
     width: 100%;
   }

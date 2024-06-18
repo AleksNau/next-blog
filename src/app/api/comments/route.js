@@ -28,21 +28,20 @@ export const GET = async (request) => {
 }
 
 
-
 //create a comment
 
 export const POST = async (request) => {
 
     const session = await auth()
-    console.log("session"+session)
+
     if (!session) {
         return new NextResponse(JSON.stringify({message: "Для коментария нужно авторизоваться"}, {status: 401}))
     }
 
     try {
         const body = await request.json()
-        console.log("body"+body)
-        const comment = await prisma.comment.create({data:{userEmail:session.user.email,...body}});
+
+        const comment = await prisma.comment.create({data: {userEmail: session.user.email, ...body}});
 
         return new NextResponse(JSON.stringify(comment, {status_: 200}))
     } catch (err) {

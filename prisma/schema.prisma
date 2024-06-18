@@ -91,7 +91,7 @@ model Category {
 model Post {
   id        String    @id @default(cuid())
   createdAt DateTime  @default(now())
-  slug      String    @unique
+  slug      Int    @unique
   title     String
   desc      String
   img       String?
@@ -109,6 +109,6 @@ model Comment {
   desc      String
   userEmail String
   user      User     @relation(fields: [userEmail], references: [email])
-  postSlug  String
+  postSlug  Int
   post      Post     @relation(fields: [postSlug], references: [slug])
 }

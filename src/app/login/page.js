@@ -6,7 +6,6 @@ import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
 
 
-
 const LoginPage = () => {
     const {status} = useSession()
 
@@ -22,13 +21,14 @@ const LoginPage = () => {
 
     return (
         <div className={s.container}>
-<div className={s.wrapper}>
-    <div className={s.socialButton} onClick={() => {
-        SignIn()
-    }}>Sign in with Google</div>
-    <div className={s.socialButton}>Sign in with Github</div>
-    <div className={s.socialButton}>Sign in with Facebook</div>
-</div>
+            <div className={s.wrapper}>
+                <div className={s.socialButton} onClick={() => {
+                    SignIn()
+                }}>Sign in with Google
+                </div>
+                <div className={s.socialButton}>Sign in with Github</div>
+                <div className={s.socialButton}>Sign in with Facebook</div>
+            </div>
         </div>
     );
 };

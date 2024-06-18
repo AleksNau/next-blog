@@ -9,6 +9,7 @@ import {ThemeContextProvider} from "@/context/ThemeContext";
 import dynamic from 'next/dynamic'
 import AuthProvider from "@/providers/AuthProvider";
 
+
 const ThemeContextProvider2 = dynamic(() => import("@/providers/ThemeProvider"), {
     ssr: false,
 })
@@ -25,17 +26,18 @@ export default function RootLayout({children}) {
         <html lang="en">
         <body className={inter.className}>
         <AuthProvider>
-        <ThemeContextProvider>
-            <ThemeContextProvider2>
-                <div className={'container'}>
-                    <div className="wrapper">
-                        <NavBar/>
-                        {children}
-                        <Footer/>
+            <ThemeContextProvider>
+                <ThemeContextProvider2>
+
+                    <div className={'container'}>
+                        <div className="wrapper">
+                            <NavBar/>
+                            {children}
+                            <Footer/>
+                        </div>
                     </div>
-                </div>
-            </ThemeContextProvider2>
-        </ThemeContextProvider>
+                </ThemeContextProvider2>
+            </ThemeContextProvider>
         </AuthProvider>
         </body>
         </html>
