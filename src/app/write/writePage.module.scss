@@ -29,6 +29,12 @@
   border: none;
   background-color: #1a8917;
   color: white;
+  cursor: pointer;
+  transition: opacity 400ms linear;
+}
+
+.publish:hover {
+  opacity: 0.8;
 }
 
 

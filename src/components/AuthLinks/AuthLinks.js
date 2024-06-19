@@ -2,7 +2,7 @@
 import React, {useState} from 'react';
 import s from "./authLinks.module.scss";
 import Link from "next/link";
-import {SignOut} from "@/app/utils/signout";
+
 import {useSession} from "next-auth/react";
 import {signOut} from "next-auth/react"
 
@@ -34,7 +34,7 @@ const AuthLinks = () => {
                     {status === 'unauthenticated' ? (<Link href={'/login'}>Login</Link>)
                         : (<>
                             <Link href={'/write'}>Write</Link>
-                            <span onClick={() => SignOut()}>Logout</span>
+                            <span onClick={() => signOut()}>Logout</span>
                         </>)}
                 </div>)}
         </>

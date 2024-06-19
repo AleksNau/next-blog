@@ -28,7 +28,6 @@ export default function RootLayout({children}) {
         <AuthProvider>
             <ThemeContextProvider>
                 <ThemeContextProvider2>
-
                     <div className={'container'}>
                         <div className="wrapper">
                             <NavBar/>

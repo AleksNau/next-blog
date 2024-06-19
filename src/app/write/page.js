@@ -2,19 +2,22 @@
 import React, {useEffect, useState} from 'react';
 import s from "./writePage.module.scss";
 import Image from "next/image";
-import ReactQuill from "react-quill";
 
 import {getStorage, ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
 import {app} from "@/app/utils/firebase";
-import {getData} from "@/components/Cardlist/CardList";
+
+import {useRouter} from "next/navigation";
+import dynamic from "next/dynamic";
 
 const storage = getStorage(app);
 
-
+const ReactQuill = dynamic(() => import("react-quill"), {
+    ssr: false,
+})
 const WritePage = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
-
+const router = useRouter();
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
@@ -72,14 +75,15 @@ const WritePage = () => {
     }, [file])
 
     const handleSubmit = async () => {
-        const {count} = await getData()
+
         console.log("count " + count)
         const res = await fetch("/api/posts", {
             method: "POST",
-            body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: `8`})
+            body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: 8})
         });
-
-        console.log(res)
+        if (res.ok) {
+            router.push("/")
+        }
     }
 
     return (
@@ -88,7 +92,7 @@ const WritePage = () => {
                    onChange={event => setTitle(event.target.value)}/>
             <div className={s.editor}>
                 <button className={s.button} onClick={() => setOpen(!open)}>
-                    <Image src={'/plus.png'} className={s.plus} width={16} height={16}/>
+                    <Image src={'/sun.png'} alt={'sun'} className={s.plus} width={16} height={16}/>
                 </button>
 
                 {open &&

@@ -50,7 +50,7 @@ const Comments = ({postSlug}) => {
 
                         <div className={s.comment} key={item.id}>
                             <div className={s.user}>
-                                <Image src={'/p1.jpeg'} width={50} height={50} className={s.image}/>
+                                <Image src={item.user.image ? (item.user.image) : "./p1.jpg"} alt={'avatar'} width={50} height={50} className={s.image}/>
                                 <div className={s.userInfo}>
                                     <span className={s.username}>{item.user.name}</span>
                                     <span className={s.date}>{item.createdAt}</span>

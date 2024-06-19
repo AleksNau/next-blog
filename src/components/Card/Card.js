@@ -3,12 +3,12 @@ import Image from "next/image";
 import React from "react";
 import Link from "next/link";
 
-const Card = ({title, category, desc, item}) => {
+const Card = ({title, category, desc, item, image="/p1.jpeg"}) => {
 
     return (
         <div className={s.container}>
             <div className={s.imageContainer}>
-                <Image className={s.image} src={'/p1.jpeg'} alt={'card'} fill/>
+                <Image className={s.image} src={image} alt={'card'} fill/>
             </div>
             <div className={s.textContainer}>
                 <div className={s.detail}>

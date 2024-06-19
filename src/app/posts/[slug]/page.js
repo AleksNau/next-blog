@@ -27,35 +27,25 @@ const SinglePage = async ({params: {slug}}) => {
                     <h1 className={s.title}>{data.title}</h1>
                     <div className={s.user}>
                         <div className={s.userImageContainer}>
-                            <Image src={'/p1.jpeg'} alt={'img'} fill className={s.avatar}/>
+                            {data.user.image && (<Image src={data.user.image} alt={'Аватарка пользователя'} fill className={s.avatar}/>)}
                         </div>
                         <div className={s.userTextContainer}>
-                            <span className={s.username}>John Doe</span>
-                            <span className={s.date}>01.01.2024</span>
+                            <span className={s.username}>{data.user.name}</span>
+                            <span className={s.date}>{data.createdAt}</span>
                         </div>
                     </div>
                 </div>
                 <div className={s.imageContainer}>
-                    <Image src={'/p1.jpeg'} alt={'img'} fill className={s.image}/>
+                    {data.img && <Image src={data.img} alt={'Изображение поста'} fill className={s.image}/>}
                 </div>
             </div>
             <div className={s.content}>
                 <div className={s.post}>
                     <div className={s.desc}>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
-                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
-                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
-                        <h2>Lorem ipsum dolor sit amet</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
-                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
-                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci blanditiis corporis
-                            delectus, dolores doloribus enim, error esse ex inventore ipsum, minima modi nulla
-                            perferendis qui reiciendis sapiente unde ut voluptas!</p>
+                        {data.desc}
                     </div>
                     <div className={s.comment}>
                         <Comments postSlug={slug}/>
-
                     </div>
                 </div>
                 <Menu/>

@@ -21,7 +21,7 @@ const CardList = async ({page}) => {
     const POST_PER_PAGE = 3;
     const hasPrev = POST_PER_PAGE * (page - 1) > 0
     const hasNext = POST_PER_PAGE * (page - 1) + POST_PER_PAGE < count;
-    console.log(count)
+
     return (
         <div className={s.container}>
 
@@ -30,7 +30,7 @@ const CardList = async ({page}) => {
 
                 {posts?.map(item => {
                     return (
-                        <Card key={item.id} title={item.title} category={item.catSlug} desc={item.desc} item={item}/>)
+                        <Card key={item.id} title={item.title} category={item.catSlug} desc={item.desc} item={item} image={item.img}/>)
                 })}
 
             </div>
