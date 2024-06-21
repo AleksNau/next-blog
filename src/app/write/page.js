@@ -8,16 +8,19 @@ import {app} from "@/app/utils/firebase";
 
 import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
+import {Editor} from "@/components/Editor/Editor";
 
 const storage = getStorage(app);
 
 const ReactQuill = dynamic(() => import("react-quill"), {
     ssr: false,
 })
+
+
 const WritePage = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
-const router = useRouter();
+    const router = useRouter();
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
@@ -76,7 +79,7 @@ const router = useRouter();
 
     const handleSubmit = async () => {
 
-        console.log("count " + count)
+
         const res = await fetch("/api/posts", {
             method: "POST",
             body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: 8})
@@ -113,8 +116,9 @@ const router = useRouter();
                                 <Image src={'/sun.png'} alt={'image'} className={s.plus} width={16} height={16}/>
                             </button>
                         </div>)}
-                <ReactQuill className={s.textArea} theme='bubble' value={value} onChange={setValue}
-                            placeHolder={'Tell your story'}/>
+                {/*<ReactQuill className={s.textArea} theme='bubble' value={value} onChange={setValue}
+                             placeHolder={'Tell your story'}/>*/}
+                <Editor/>
             </div>
             <button className={s.publish} onClick={handleSubmit}>Publish</button>
 
