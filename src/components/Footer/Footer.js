@@ -1,14 +1,16 @@
 import React from 'react';
 import s from "./footer.module.scss";
-import Image from "next/image";
+
 import Link from "next/link";
+import { SlSocialVkontakte,SlSocialInstagram ,SlSocialYoutube,SlSocialFacebook } from "react-icons/sl";
+import { GiDiceShield } from "react-icons/gi";
 
 const Footer = () => {
     return (
         <div className={s.container}>
             <div className={s.info}>
                 <div className={s.logo}>
-                    <Image src={'/logo.png'} alt={'logo'} width={50} height={50}/>
+                    <GiDiceShield className={s.mainlogo} alt={'logo'}/>
                     <h2 className={s.logoText}>Настолки FUN</h2>
                 </div>
                 <p className={s.desc}>
@@ -18,16 +20,16 @@ const Footer = () => {
                 </p>
                 <div className={s.icons}>
                     <Link href={"https://www.facebook.com/"} target={"_blank"}>
-                        <Image className={s.image} src={'/facebook.png'} alt={'icon'} width={18} height={18}/>
+                        <SlSocialFacebook className={s.image} alt={'facebook'}/>
                     </Link>
                     <Link href={"https://www.instagram.com/"} target={"_blank"}>
-                        <Image className={s.image} src={'/instagram.png'} alt={'icon'} width={18} height={18}/>
+                        <SlSocialInstagram className={s.image} alt={'instagram'}/>
                     </Link>
-                    <Link href={"https://www.tiktok.com/"} target={"_blank"}>
-                        <Image className={s.image} src={'/tiktok.png'} alt={'icon'} width={18} height={18}/>
+                    <Link href={"https://www.Vkontakte.ru/"} target={"_blank"}>
+                        <SlSocialVkontakte className={s.image} alt={'Vkontakte'}/>
                     </Link>
                     <Link href={"https://m.youtube.com/?gl=RU&hl=ru"} target={"_blank"}>
-                        <Image className={s.image} src={'/youtube.png'} alt={'icon'} width={18} height={18}/>
+                        <SlSocialYoutube className={s.image} alt={'youtube'}/>
                     </Link>
                 </div>
             </div>
