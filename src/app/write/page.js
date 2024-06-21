@@ -25,6 +25,41 @@ const WritePage = () => {
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
 
+    const quillModules = {
+        toolbar: [
+            [{ header: [1, 2, 3, false] }],
+            ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+            [{ list: 'ordered' }, { list: 'bullet' }],
+            ['link', 'image'],
+            [{ align: [] }],
+            [{ color: [] }],
+            ['code-block'],
+            ['clean'],
+        ],
+    };
+
+
+    const quillFormats = [
+        'header',
+        'bold',
+        'italic',
+        'underline',
+        'strike',
+        'blockquote',
+        'list',
+        'bullet',
+        'link',
+        'image',
+        'align',
+        'color',
+        'code-block',
+    ];
+
+
+    const handleEditorChange = (newContent) => {
+        setValue(newContent);
+    };
+
     useEffect(() => {
         const upload = () => {
             const name = new Date().getTime() + file.name
@@ -78,8 +113,6 @@ const WritePage = () => {
     }, [file])
 
     const handleSubmit = async () => {
-
-
         const res = await fetch("/api/posts", {
             method: "POST",
             body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: 8})
@@ -118,7 +151,20 @@ const WritePage = () => {
                         </div>)}
                 {/*<ReactQuill className={s.textArea} theme='bubble' value={value} onChange={setValue}
                              placeHolder={'Tell your story'}/>*/}
-                <Editor/>
+                <div>
+                    <div className="h-screen w-screen flex items-center flex-col">
+                        <div className="h-full w-[90vw]">
+                            <QuillEditor
+                                value={value}
+                                onChange={handleEditorChange}
+                                modules={quillModules}
+                                formats={quillFormats}
+                                className="w-full h-[70%] mt-10 bg-white"
+                                theme={'bubble'}
+                            />
+                        </div>
+                    </div>
+                </div>
             </div>
             <button className={s.publish} onClick={handleSubmit}>Publish</button>
 

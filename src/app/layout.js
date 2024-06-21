@@ -1,5 +1,5 @@
 import './globals.css'
-import {Inter} from 'next/font/google'
+import {Golos_Text} from 'next/font/google'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from "../components/Footer/Footer";
 import {ThemeContextProvider} from "@/context/ThemeContext";
@@ -14,7 +14,7 @@ const ThemeContextProvider2 = dynamic(() => import("@/providers/ThemeProvider"),
     ssr: false,
 })
 
-const inter = Inter({subsets: ['latin']})
+const inter = Golos_Text({subsets: ['latin']})
 
 export const metadata = {
     title: 'Blog App',

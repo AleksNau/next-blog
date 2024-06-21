@@ -7,7 +7,7 @@ import { GiDiceShield } from "react-icons/gi";
 
 const Footer = () => {
     return (
-        <div className={s.container}>
+        <footer className={s.container}>
             <div className={s.info}>
                 <div className={s.logo}>
                     <GiDiceShield className={s.mainlogo} alt={'logo'}/>
@@ -57,7 +57,7 @@ const Footer = () => {
                           target={"_blank"}>Youtube</Link>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 };
 

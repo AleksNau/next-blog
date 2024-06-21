@@ -8,7 +8,7 @@ import { SlSocialVkontakte,SlSocialInstagram ,SlSocialYoutube,SlSocialFacebook }
 
 const NavBar = () => {
     return (
-        <div className={s.container}>
+        <header className={s.container}>
             <div className={s.social}>
                 <Link href={"https://www.facebook.com/"} target={"_blank"}>
                     <SlSocialFacebook className={s.image} alt={'facebook'}/>
@@ -31,7 +31,7 @@ const NavBar = () => {
                 <Link href={'/'} className={s.link}>О нас</Link>
                 <AuthLinks/>
             </div>
-        </div>
+        </header>
     );
 
 };
