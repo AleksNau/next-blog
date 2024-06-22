@@ -6,6 +6,7 @@ import Card from "@/components/Card/Card";
 
 
 export const getData = async (page) => {
+
     const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {cache: 'no-store'});
 
     if (!res.ok) {
@@ -29,6 +30,7 @@ const CardList = async ({page}) => {
             <div className={s.data}>
 
                 {posts?.map(item => {
+
                     return (
                         <Card key={item.id} title={item.title} category={item.catSlug} desc={item.desc} item={item} image={item.img}/>)
                 })}

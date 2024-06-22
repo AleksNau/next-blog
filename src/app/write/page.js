@@ -9,13 +9,14 @@ import {app} from "@/app/utils/firebase";
 import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
 import {Editor} from "@/components/Editor/Editor";
+import {getData} from "@/components/Cardlist/CardList";
 
 const storage = getStorage(app);
 
 const ReactQuill = dynamic(() => import("react-quill"), {
     ssr: false,
 })
-
+const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
 const WritePage = () => {
     const [open, setOpen] = useState(false);
@@ -112,10 +113,31 @@ const WritePage = () => {
 
     }, [file])
 
+    const getData = async () => {
+
+        const res = await fetch(`http://localhost:3000/api/posts?page=1`, {cache: 'no-store'});
+
+        if (!res.ok) {
+            throw new Error('Нет постов')
+        }
+
+        return res.json()
+    }
+
+
+
+
     const handleSubmit = async () => {
+        let count;
+        const data = await getData().then((res) => {
+            count =  res.count;
+
+        })
+
+
         const res = await fetch("/api/posts", {
             method: "POST",
-            body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: 8})
+            body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: count + 1})
         });
         if (res.ok) {
             router.push("/")
@@ -156,11 +178,11 @@ const WritePage = () => {
                         <div className="h-full w-[90vw]">
                             <QuillEditor
                                 value={value}
-                                onChange={handleEditorChange}
+                                onChange={setValue}
                                 modules={quillModules}
                                 formats={quillFormats}
                                 className="w-full h-[70%] mt-10 bg-white"
-                                theme={'bubble'}
+                                theme={'snow'}
                             />
                         </div>
                     </div>

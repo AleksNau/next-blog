@@ -10,7 +10,7 @@ const Featured = () => {
     return (
         <div className={s.container}>
             <h1 className={s.title}>
-                <b>Lorem ipsum dolor sit amet </b>
+                <b>Главная новость ностолок!</b>
             </h1>
             <div className={s.post}>
                 <div className={s.imgContainer}>

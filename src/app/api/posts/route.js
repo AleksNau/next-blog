@@ -31,14 +31,13 @@ export const GET = async (req) => {
 export const POST = async (request) => {
 
     const session = await auth()
-    console.log("session" + session)
+
     if (!session) {
         return new NextResponse(JSON.stringify({message: "Для коментария нужно авторизоваться"}, {status: 401}))
     }
 
     try {
         const body = await request.json()
-        console.log("body" + body)
 
         const post = await prisma.post.create({data: {userEmail: session.user.email, ...body}});
 
