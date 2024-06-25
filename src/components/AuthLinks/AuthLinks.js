@@ -31,10 +31,10 @@ const AuthLinks = () => {
                     <Link href={'/'}>Главная</Link>
                     <Link href={'/'}>О нас</Link>
                     <Link href={'/'}>Контакты</Link>
-                    {status === 'unauthenticated' ? (<Link href={'/login'}>Login</Link>)
+                    {status === 'unauthenticated' ? (<Link href={'/login'}>Войти</Link>)
                         : (<>
-                            <Link href={'/write'}>Write</Link>
-                            <span onClick={() => signOut()}>Logout</span>
+                            <Link href={'/write'}>Новый пост</Link>
+                            <span onClick={() => signOut()}>Выйти</span>
                         </>)}
                 </div>)}
         </>

@@ -14,9 +14,7 @@ const Footer = () => {
                     <h2 className={s.logoText}>Настолки FUN</h2>
                 </div>
                 <p className={s.desc}>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci asperiores autem, consequuntur,
-                    ea earum expedita explicabo inventore ipsam laboriosam minus molestiae optio quas, quibusdam quos
-                    repudiandae rerum voluptas voluptatum! Eaque.
+                    Небольшой но активный блог о настолках.
                 </p>
                 <div className={s.icons}>
                     <Link href={"https://www.facebook.com/"} target={"_blank"}>
@@ -35,21 +33,21 @@ const Footer = () => {
             </div>
             <div className={s.links}>
                 <div className={s.list}>
-                    <span className={s.listTitle}>Links</span>
+                    <span className={s.listTitle}>Ссылки</span>
                     <Link className={s.linkItem} href={'/'}>Главная</Link>
                     <Link className={s.linkItem} href={'/'}>О нас</Link>
                     <Link className={s.linkItem} href={'/'}>Блог</Link>
                     <Link className={s.linkItem} href={'/'}>Контакты</Link>
                 </div>
                 <div className={s.list}>
-                    <span className={s.listTitle}>Tags</span>
-                    <Link className={s.linkItem} href={'/'}>Style</Link>
-                    <Link className={s.linkItem} href={'/'}>Fashion</Link>
-                    <Link className={s.linkItem} href={'/'}>Travel</Link>
-                    <Link className={s.linkItem} href={'/'}>Coding</Link>
+                    <span className={s.listTitle}>Теги</span>
+                    <Link className={s.linkItem} href={'/'}>Новинки</Link>
+                    <Link className={s.linkItem} href={'/'}>Евро</Link>
+                    <Link className={s.linkItem} href={'/'}>Пати</Link>
+                    <Link className={s.linkItem} href={'/'}>Дуэльные</Link>
                 </div>
                 <div className={s.list}>
-                    <span className={s.listTitle}>Social</span>
+                    <span className={s.listTitle}>Контакты</span>
                     <Link className={s.linkItem} href={"https://www.facebook.com/"} target={"_blank"}>Facebook</Link>
                     <Link className={s.linkItem} href={"https://www.instagram.com/"} target={"_blank"}>Instagram</Link>
                     <Link className={s.linkItem} href={"https://www.tiktok.com/"} target={"_blank"}>Tiktok</Link>
