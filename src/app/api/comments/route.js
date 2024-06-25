@@ -7,9 +7,9 @@ import {auth} from "@/auth";
 export const GET = async (request) => {
     const {searchParams} = new URL(request.url)
 
-    const postSlug = searchParams.get("postSlug")
+    const postSlug = Number(searchParams.get("postSlug"))
 
-    console.log('postSlug ' + postSlug)
+
     try {
         const comments = await prisma.comment.findMany({
             where: {

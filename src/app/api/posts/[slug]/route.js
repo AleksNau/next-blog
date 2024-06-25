@@ -4,7 +4,7 @@ import prisma from "@/lib/prisma";
 
 //SINGLE POST
 export const GET = async (request, {params}) => {
-    const slug = params.slug
+    const slug = Number(params.slug)
 
     try {
         const post = await prisma.post.findUnique({
