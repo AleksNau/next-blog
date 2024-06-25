@@ -21,7 +21,6 @@ const Comments = ({postSlug}) => {
     const {status} = useSession();
     const {data, mutate, isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher);
 
-
     const [desc, setDesc] = useState("")
 
     const handleSubmit = async () => {
@@ -45,7 +44,7 @@ const Comments = ({postSlug}) => {
                     </div>
                 ) : (<Link href={'/'}>Login to write a comment</Link>)
                 }
-                {isLoading ? ("Loading") : (data.map((item) => {
+                {isLoading ? ("Loading") : (data[0] ? ((data.map((item) => {
                     return (
 
                         <div className={s.comment} key={item.id}>
@@ -59,7 +58,7 @@ const Comments = ({postSlug}) => {
                             <p className={s.desc}>{item.desc}</p>
                         </div>
                     )
-                }))}
+                }))) : (<p className={s.notcomment}>Ещё ни одного коментария</p>))}
             </div>
             <div></div>
         </div>
