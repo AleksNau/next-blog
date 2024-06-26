@@ -42,7 +42,7 @@ console.log(data)
             <div className={s.content}>
                 <div className={s.post}>
                     <div className={s.desc}>
-                        {data.desc}
+
                     </div>
                     <div className={s.comment}>
                         <Comments postSlug={slug}/>
