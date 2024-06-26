@@ -13,7 +13,7 @@ const fetcher = async (url) => {
         const error = new Error(data.message);
         throw error;
     }
-    console.log(data);
+    console.log("fetcher"+data);
     return data;
 }
 
@@ -21,7 +21,7 @@ const fetcher = async (url) => {
 const Comments = ({postSlug}) => {
     const {status} = useSession();
     const {data, mutate, isLoading} = useSWR(`http://localhost:3000/api/comments?postSlug=${postSlug}`, fetcher);
-
+    console.log("component"+data);
     const [desc, setDesc] = useState("")
 
     const handleSubmit = async () => {
@@ -44,7 +44,7 @@ const Comments = ({postSlug}) => {
                     </div>
                 ) : (<Link href={'/'}>Login to write a comment</Link>)
                 }
-                {isLoading ? ("Loading") : (data.length > 0 ? ((data.map((item) => {
+                {isLoading ? (<p>Loading</p>) : (data.length > 0 ? ((data.map((item) => {
                     return (
 
                         <div className={s.comment} key={item.id}>
