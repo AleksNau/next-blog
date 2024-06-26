@@ -31,7 +31,6 @@ const Comments = ({postSlug}) => {
         mutate();
     }
 
-
     return (
         <div className={s.container}>
             <h2 className={s.title}></h2>
