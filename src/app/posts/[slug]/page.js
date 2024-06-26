@@ -45,7 +45,7 @@ console.log(data)
                         {data.desc}
                     </div>
                     <div className={s.comment}>
-                        <Comments postSlug={slug}/>
+                        {/*<Comments postSlug={slug}/>*/}
                     </div>
                 </div>
                 <Menu/>
