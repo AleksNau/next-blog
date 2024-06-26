@@ -20,7 +20,11 @@ export const GET = async (request) => {
             }
         });
 
-        return new NextResponse(JSON.stringify(comments, {status_: 200}))
+        if (comments === undefined) {
+            return new NextResponse(JSON.stringify({} , {status_: 200}))
+        }
+
+        return new NextResponse(JSON.stringify(comments , {status_: 200}))
     } catch (err) {
         console.log(err)
         return new NextResponse(JSON.stringify({message: "Коментарии не найдены"}, {status: 500}))
