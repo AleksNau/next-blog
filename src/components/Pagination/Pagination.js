@@ -5,8 +5,7 @@ import {useRouter} from "next/navigation";
 
 const Pagination = ({page, hasPrev, hasNext}) => {
     const router = useRouter()
-    const {pathname} = useRouter()
-    console.log('pathname :' + pathname)
+
 
     return (
         <div className={s.container}>
