@@ -19,7 +19,7 @@ const getData = async (slug) => {
 const SinglePage = async ({params: {slug}}) => {
     //тут один пост по запросу
     const data = await getData(slug);
-console.log(data)
+
     return (
         <div className={s.container}>
             <div className={s.infoContainer}>
@@ -45,7 +45,7 @@ console.log(data)
 
                     </div>
                     <div className={s.comment}>
-                        <Comments postSlug={slug}/>
+
                     </div>
                 </div>
                 <Menu/>
