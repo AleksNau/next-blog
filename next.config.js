@@ -5,6 +5,19 @@ const nextConfig = { images: {
                 hostname: 'lh3.googleusercontent.com',
             },
         ],
-    },}
+    },
+    async rewrites() {
+        return [
+            {
+                source: '/api/:path*',
+                destination: '/api/:path*'
+            },
+            {
+                source: '/:path*',
+                destination: '/'
+            }
+        ];
+    }
+}
 
 module.exports = nextConfig
