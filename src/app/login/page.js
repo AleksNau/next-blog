@@ -5,6 +5,7 @@ import s from "./loginPage.module.scss";
 import {signIn} from "next-auth/react"
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
+import {SignIN,SignOUT} from '../utils/signin'
 
 
 
@@ -24,7 +25,7 @@ const LoginPage = () => {
         <div className={s.container}>
             <div className={s.wrapper}>
                 <div className={s.socialButton} onClick={() => {
-                    signIn("google")
+                    SignIN();
                 }}>Sign in with Google
                 </div>
                 <div className={s.socialButton}>Sign in with Github</div>
