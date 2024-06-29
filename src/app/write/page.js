@@ -115,7 +115,7 @@ const WritePage = () => {
 
     const getData = async () => {
 
-        const res = await fetch(`http://localhost:3000/api/posts?page=1`, {cache: 'no-store'});
+        const res = await fetch(`https://www.tablefun.ru/api/posts?page=1`, {cache: 'no-store'});
 
         if (!res.ok) {
             throw new Error('Нет постов')
@@ -135,7 +135,7 @@ const WritePage = () => {
         })
 
 
-        const res = await fetch("/api/posts", {
+        const res = await fetch("https://www.tablefun.ru/api/posts", {
             method: "POST",
             body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: count + 1})
         });
