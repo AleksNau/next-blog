@@ -133,14 +133,15 @@ const WritePage = () => {
             count =  res.count;
 
         })
-
-
+        console.log("data: "+data)
+        console.log("write send: "+{title, desc: value, img: media, catSlug: "travel", slug: count + 1})
         const res = await fetch("https://www.tablefun.ru/api/posts", {
             method: "POST",
             body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: count + 1})
         });
         if (res.ok) {
-            router.push("/")
+            console.log("res: "+res)
+           /* router.push("/")*/
         }
     }
 
@@ -171,8 +172,7 @@ const WritePage = () => {
                                 <Image src={'/sun.png'} alt={'image'} className={s.plus} width={16} height={16}/>
                             </button>
                         </div>)}
-                {/*<ReactQuill className={s.textArea} theme='bubble' value={value} onChange={setValue}
-                             placeHolder={'Tell your story'}/>*/}
+
                 <div>
                     <div className="h-screen w-screen flex items-center flex-col">
                         <div className="h-full w-[90vw]">

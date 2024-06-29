@@ -33,17 +33,17 @@ export const POST = async (request) => {
     const session = await auth()
 
     if (!session) {
-        return new NextResponse(JSON.stringify({message: "Для коментария нужно авторизоваться"}, {status: 401}))
+        return new NextResponse(JSON.stringify({message: "Нет сессии"}, {status: 401}))
     }
 
     try {
         const body = await request.json()
-
+        console.log("api req: "+body)
         const post = await prisma.post.create({data: {userEmail: session.user.email, ...body}});
 
         return new NextResponse(JSON.stringify(comment, {status_: 200}))
     } catch (err) {
         console.log(err)
-        return new NextResponse(JSON.stringify({message: "Коментарии не найдены"}, {status: 500}))
+        return new NextResponse(JSON.stringify({message: "Постов нет"}, {status: 500}))
     }
 }
