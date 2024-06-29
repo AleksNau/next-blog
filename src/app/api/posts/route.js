@@ -30,7 +30,7 @@ export const GET = async (req) => {
 //create a post
 export const POST = async (request) => {
 
-    const session = await auth()
+    const session = await auth(request)
 
     if (!session) {
         return new NextResponse(JSON.stringify({message: "Нет сессии"}, {status: 401}))
