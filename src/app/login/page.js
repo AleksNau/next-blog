@@ -1,11 +1,12 @@
-'use client';
-import React, {useEffect} from 'react';
+"use client"
+import {useEffect} from 'react';
 import s from "./loginPage.module.scss";
 
-import {signIn} from "next-auth/react"
+//import {signIn} from "next-auth/react"
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
-
+import { signIn } from "@/auth.ts"
+import {loginOath} from "@/app/utils/signin";
 
 
 const LoginPage = () => {
@@ -24,7 +25,7 @@ const LoginPage = () => {
         <div className={s.container}>
             <div className={s.wrapper}>
                 <div className={s.socialButton} onClick={() => {
-                    signIn("google")
+                   loginOath().then(res => console.log(res))
                 }}>Sign in with Google
                 </div>
                 <div className={s.socialButton}>Sign in with Github</div>
