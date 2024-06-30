@@ -25,6 +25,7 @@ const LoginPage = () => {
             <div className={s.wrapper}>
                 <div className={s.socialButton} onClick={() => {
                     signIn("google")
+
                 }}>Sign in with Google
                 </div>
                 <div className={s.socialButton}>Sign in with Github</div>
