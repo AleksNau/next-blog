@@ -18,7 +18,7 @@ const Card = ({title, category, desc, item, image="/p1.jpeg"}) => {
                 <Link href={`/posts/${item.slug}`} item={item}>
                     <h2 className={s.title}>{title}</h2>
                 </Link>
-<div className={s.description} dangerouslySetInnerHTML={{ __html: desc }}/>
+<div className={s.description} dangerouslySetInnerHTML={{ __html: desc.slice(0,45) }}/>
 
                 <Link className={s.link} href={'/'}>Read More</Link>
             </div>

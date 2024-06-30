@@ -17,8 +17,8 @@ const ThemeContextProvider2 = dynamic(() => import("@/providers/ThemeProvider"),
 const inter = Golos_Text({subsets: ['latin']})
 
 export const metadata = {
-    title: 'Blog App',
-    description: 'The best pages app!',
+    title: 'Настолки FUN',
+    description: 'Блог о настольных играх',
 }
 
 export default function RootLayout({children}) {

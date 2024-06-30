@@ -3,7 +3,20 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
+                protocol: 'https',
+                hostname: 'sun1-24.userapi.com',
+            },
+            {
+                protocol: 'https',
                 hostname: 'lh3.googleusercontent.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 'sun9-57.userapi.com',
+            },
+            {
+                protocol: 'https',
+                hostname: 's.tesera.ru',
             },
         ],
     },

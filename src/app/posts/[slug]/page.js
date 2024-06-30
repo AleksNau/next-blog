@@ -41,8 +41,7 @@ console.log(data)
             </div>
             <div className={s.content}>
                 <div className={s.post}>
-                    <div className={s.desc}>
-                        {data.desc}
+                    <div className={s.desc} dangerouslySetInnerHTML={{ __html: data.desc }} >
                     </div>
                     <div className={s.comment}>
                         {/*<Comments postSlug={slug}/>*/}
