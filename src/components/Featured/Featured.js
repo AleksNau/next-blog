@@ -6,9 +6,8 @@ import Link from "next/link";
 import {getSinglePost, handleNumber} from "@/app/utils/data";
 
 
-const Featured =async () => {
-    const number = await handleNumber()
-    const data = await getSinglePost(number);
+const Featured = ({data,number}) => {
+console.log(data)
     return (
         <div className={s.container}>
             <h1 className={s.title}>
@@ -16,10 +15,9 @@ const Featured =async () => {
             </h1>
             <div className={s.post}>
                 <div className={s.imgContainer}>
-                    <Image className={s.image} src={'./p1.png'} alt={'alt'} fill/>
+                    <Image className={s.image} src={data.img} alt={data.title} fill/>
                 </div>
                 <div className={s.textContainer}>
-
                     <Link className={s.postButton} href={`/${number}`} >Read more</Link>
                 </div>
             </div>

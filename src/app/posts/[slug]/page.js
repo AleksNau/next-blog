@@ -3,23 +3,16 @@ import s from "./singlePage.module.scss";
 import Menu from "@/components/Menu/Menu";
 import Image from "next/image";
 import Comments from "@/components/Comments/Comments";
+import {getSinglePost} from "@/app/utils/data";
 
 
-const getData = async (slug) => {
-    const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {cache: 'no-store'});
 
-    if (!res.ok) {
-        throw new Error('Нет такого поста')
-    }
-
-    return res.json()
-}
 
 //Страница поста
 const SinglePage = async ({params: {slug}}) => {
     //тут один пост по запросу
-    const data = await getData(slug);
-console.log(data)
+    const data = await getSinglePost(slug);
+
     return (
         <div className={s.container}>
             <div className={s.infoContainer}>

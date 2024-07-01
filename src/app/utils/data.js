@@ -1,7 +1,7 @@
 "use server"
-const getData = async () => {
+export const getData = async (page = 1) => {
 
-    const res = await fetch(`https://www.tablefun.ru/api/posts?page=1`, {cache: 'no-store'});
+    const res = await fetch(`https://www.tablefun.ru/api/posts?page=${page}`, {cache: 'no-store'});
 
     if (!res.ok) {
         throw new Error('Нет постов')

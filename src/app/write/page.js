@@ -9,7 +9,8 @@ import {app} from "@/app/utils/firebase";
 import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
 import {Editor} from "@/components/Editor/Editor";
-import {getData} from "@/components/Cardlist/CardList";
+import {getData} from "@/app/utils/data";
+
 
 const storage = getStorage(app);
 
@@ -113,17 +114,6 @@ const WritePage = () => {
 
     }, [file])
 
-    const getData = async () => {
-
-        const res = await fetch(`https://www.tablefun.ru/api/posts?page=1`, {cache: 'no-store'});
-
-        if (!res.ok) {
-            throw new Error('Нет постов')
-        }
-
-        return res.json()
-    }
-
 
 
 
@@ -131,7 +121,6 @@ const WritePage = () => {
         let count;
         const data = await getData().then((res) => {
             count =  res.count;
-
         })
         console.log("data: "+data)
         console.log("write send: "+{title, desc: value, img: media, catSlug: "travel", slug: count + 1})
