@@ -9,6 +9,9 @@
 .categoryItem {
   padding: 10px 25px;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 14px;
   cursor: pointer;
   transition: opacity 400ms linear;
@@ -19,14 +22,22 @@
 }
 
 
-.travel {
-  background-color: #ff7857;
+.euro {
+  background-color: #57c4ff31;
 }
 
-.fashion {
-  background-color: #1daa8d;
+.duel {
+  background-color: rgba(100, 90, 171, 0.13);
 }
 
-.culture {
-  background-color: #b79641;
+.new {
+  background-color: rgba(185, 248, 122, 0.19);
+}
+
+.party {
+  background-color: rgba(236, 73, 218, 0.37);
+}
+
+.amery {
+  background-color: rgba(96, 96, 96, 0.3);
 }

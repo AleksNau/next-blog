@@ -1,13 +1,11 @@
-
-
 import s from "./featured.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import {getSinglePost, handleNumber} from "@/app/utils/data";
+
 
 
 const Featured = ({data,number}) => {
-console.log(data)
+
     return (
         <div className={s.container}>
             <h1 className={s.title}>
@@ -18,7 +16,9 @@ console.log(data)
                     <Image className={s.image} src={data.img} alt={data.title} fill/>
                 </div>
                 <div className={s.textContainer}>
-                    <Link className={s.postButton} href={`/${number}`} >Read more</Link>
+                    <h1 className={s.postTitle}>{data.title}</h1>
+                    <div className={s.postDesc} dangerouslySetInnerHTML={{ __html: data.desc.slice(0,45) }}/>
+                    <Link className={s.postButton} href={`/posts/${number}`} >Read more</Link>
                 </div>
             </div>
         </div>

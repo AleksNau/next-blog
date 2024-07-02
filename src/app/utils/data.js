@@ -29,3 +29,13 @@ export const handleNumber = async () => {
     })
 return count
 }
+
+export const getCategoryData = async () => {
+    const res = await fetch('http://localhost:3000/api/categories', {cache: 'no-store'});
+
+    if (!res.ok) {
+        throw new Error('Не та категория')
+    }
+
+    return res.json()
+}

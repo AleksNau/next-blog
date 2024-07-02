@@ -12,7 +12,7 @@ const AuthLinks = () => {
 
     return (
         <>
-            {status === 'unauthenticated' ? (<Link href={'/login'} className={s.link}>Войти</Link>)
+            {status === 'unauthenticated' ? (<Link href={'/api/auth/signin'} className={s.link}>Войти</Link>)
                 : (<>
                     <Link href={'/write'} className={s.link}>Новый пост</Link>
                     <span className={s.link} onClick={() => {
@@ -31,7 +31,7 @@ const AuthLinks = () => {
                     <Link href={'/'}>Главная</Link>
                     <Link href={'/'}>О нас</Link>
                     <Link href={'/'}>Контакты</Link>
-                    {status === 'unauthenticated' ? (<Link href={'/login'}>Войти</Link>)
+                    {status === 'unauthenticated' ? (<Link href={'/api/auth/signin'}>Войти</Link>)
                         : (<>
                             <Link href={'/write'}>Новый пост</Link>
                             <span onClick={() => signOut()}>Выйти</span>
