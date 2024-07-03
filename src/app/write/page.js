@@ -8,21 +8,21 @@ import {app} from "@/app/utils/firebase";
 
 import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
-import {Editor} from "@/components/Editor/Editor";
 import {getData} from "@/app/utils/data";
+import {useSession} from "next-auth/react";
 
 
 const storage = getStorage(app);
 
-const ReactQuill = dynamic(() => import("react-quill"), {
-    ssr: false,
-})
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
 const WritePage = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
     const router = useRouter();
+    const {data} = useSession()
+
+    console.log("session"+data)
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");

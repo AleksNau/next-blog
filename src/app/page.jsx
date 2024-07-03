@@ -18,7 +18,7 @@ export default async function Home({searchParams}) {
             <CategoryList data={categories}/>
             <div className={styles.content}>
                 <CardList page={page} data={posts} amount={count}/>
-                <Menu categories={categories} data={posts}/>
+                <Menu/>
             </div>
         </main>);
 }
