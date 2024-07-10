@@ -4,13 +4,16 @@ import {auth} from "@/auth";
 
 export const GET = async (req) => {
     const {searchParams} = new URL(req.url);
-
+    const cat = searchParams.get("cat");
     const page = searchParams.get('page')
     const POSTS_PER_PAGE = 3;
 
     const query = {
         take: POSTS_PER_PAGE,
-        skip: POSTS_PER_PAGE * (page - 1)
+        skip: POSTS_PER_PAGE * (page - 1),
+        where: {
+            ...(cat && { catSlug: cat }),
+        },
     }
 
     try {

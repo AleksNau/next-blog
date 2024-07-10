@@ -9,7 +9,7 @@ const MenuCategories = ({categories}) => {
 
             {categories.map(item => {
                 return (
-                    <Link key={item.id} href={`/pages?cat=${item.slug}`} className={`${s.categoryItem} ${s[item.slug]}`}>
+                    <Link key={item.id} href={`/category?cat=${item.slug}`} className={`${s.categoryItem} ${s[item.slug]}`}>
                         <Image src={item.img} width={32} height={32} className={s.image} alt={item.title}/>
                         {item.title}</Link>)
 
