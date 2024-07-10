@@ -35,10 +35,6 @@ export const POST = async (request) => {
 
     const session = await auth()
 
-    if (!session) {
-        return new NextResponse(JSON.stringify({message: "Нет сессии"}, {status: 401}))
-    }
-
     try {
         const body = await request.json()
         console.log("api req: "+body.data)
