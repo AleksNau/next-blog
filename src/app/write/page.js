@@ -22,7 +22,8 @@ const WritePage = () => {
     const router = useRouter();
     const {data} = useSession()
 
-    console.log("session"+data)
+    console.log("session user"+ data.user)
+    console.log("session user.name"+ data.user.name)
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
@@ -119,14 +120,13 @@ const WritePage = () => {
 
     const handleSubmit = async () => {
         let count;
-        const data = await getData().then((res) => {
+        const data2 = await getData().then((res) => {
             count =  res.count;
         })
-        console.log("data: "+data)
-        console.log("write send: "+{title, desc: value, img: media, catSlug: "travel", slug: count + 1})
+
         const res = await fetch("https://www.tablefun.ru/api/posts", {
             method: "POST",
-            body: JSON.stringify({title, desc: value, img: media, catSlug: "travel", slug: count + 1})
+            body: JSON.stringify({title, desc: value, img: media, catSlug: "new", slug: count + 1,data})
         });
         if (res.ok) {
             console.log("res: "+res)
