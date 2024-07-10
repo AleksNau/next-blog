@@ -22,8 +22,7 @@ const WritePage = () => {
     const router = useRouter();
     const {data} = useSession()
 
-    console.log("session user"+ data.user)
-    console.log("session user.name"+ data.user.name)
+    console.log("session user.name "+ data.user.email)
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
