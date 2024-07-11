@@ -125,7 +125,7 @@ const WritePage = () => {
 
         const res = await fetch("https://www.tablefun.ru/api/posts", {
             method: "POST",
-            body: JSON.stringify({title, desc: value, img: media, catSlug: "new", slug: count + 1,data})
+            body: JSON.stringify({title, desc: value, img: media, catSlug: "new", slug: count + 1,userEmail:data.user.email})
         });
         if (res.ok) {
             console.log("res: "+res)

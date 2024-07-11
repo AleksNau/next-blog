@@ -33,16 +33,13 @@ export const GET = async (req) => {
 //create a post
 export const POST = async (request) => {
 
-    const session = await auth()
-
     try {
         const body = await request.json()
-        console.log("api req: "+body.data)
-        const post = await prisma.post.create({data: {userEmail: session.user.email, ...body}});
+        const post = await prisma.post.create({data: {...body}});
 
-        return new NextResponse(JSON.stringify(post, {status_: 200}))
+        return new NextResponse(JSON.stringify(post, {status: 200}))
     } catch (err) {
         console.log(err)
-        return new NextResponse(JSON.stringify({message: "Постов нет"}, {status: 500}))
+        return new NextResponse(JSON.stringify({message: "Постов не создан"}, {status: 500}))
     }
 }
