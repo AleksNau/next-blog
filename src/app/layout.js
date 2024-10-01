@@ -3,13 +3,16 @@ import {Golos_Text} from 'next/font/google'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from "../components/Footer/Footer";
 import {ThemeContextProvider} from "@/context/ThemeContext";
+import {
+    ClerkProvider,
+  } from '@clerk/nextjs'
 
 /*import ThemeProvider from "@/providers/ThemeProvider"; использую провайдер2 за место так как не работает*/
 
 import dynamic from 'next/dynamic'
-import AuthProvider from "@/providers/AuthProvider";
 
 
+const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 const ThemeContextProvider2 = dynamic(() => import("@/providers/ThemeProvider"), {
     ssr: false,
 })
@@ -25,7 +28,7 @@ export default function RootLayout({children}) {
     return (
         <html lang="en">
         <body className={inter.className}>
-        <AuthProvider>
+        <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
             <ThemeContextProvider>
                 <ThemeContextProvider2>
                     <div className={'container'}>
@@ -37,7 +40,7 @@ export default function RootLayout({children}) {
                     </div>
                 </ThemeContextProvider2>
             </ThemeContextProvider>
-        </AuthProvider>
+            </ClerkProvider>
 
         
         </body>

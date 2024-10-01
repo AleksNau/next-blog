@@ -1,43 +1,26 @@
 'use client';
 import React, {useEffect} from 'react';
-import s from "./loginPage.module.scss";
-
-import {signIn} from "next-auth/react"
-import {useSession} from "next-auth/react";
 import {useRouter} from "next/navigation";
-import {SignIn} from "@/app/utils/SignInButton";
-
+import {useUser} from "@clerk/clerk-react";
+import s from './loginPage.module.scss'
+import {SignIn} from "@clerk/clerk-react";
 
 
 const LoginPage = () => {
-    const {status} = useSession()
+    
     const router = useRouter()
 
-
+    const {user,isLoaded,isSignedIn} = useUser();
     useEffect(() => {
 
-        if (status === 'authenticated') {
+        if (isSignedIn) {
             router.push('/')
         }
-    }, [status,router]);
+    }, [router]);
 
     return (
         <div className={s.container}>
-            <div className={s.wrapper}>
-                <form
-                    action={() => {
-                        SignIn()
-                    }}
-                >
-                    <button type="submit">Signin with Google</button>
-                </form>
-                {/*<div className={s.socialButton} onClick={() => {
-                    signIn("google")
-                }}>Sign in with Google
-                </div>*/}
-                <div className={s.socialButton}>Sign in with Github</div>
-                <div className={s.socialButton}>Sign in with Facebook</div>
-            </div>
+            <SignIn/>
         </div>
     );
 };

@@ -2,17 +2,16 @@
 import React, {useState} from 'react';
 import s from "./authLinks.module.scss";
 import Link from "next/link";
-
-import {useSession} from "next-auth/react";
+import {useUser} from "@clerk/clerk-react";
 import {signOut} from "next-auth/react"
 
 const AuthLinks = () => {
     const [open, setOpen] = useState(false);
-    const {status} = useSession()
-
+    const {user,isLoaded,isSignedIn} = useUser();
+    console.log(isSignedIn)
     return (
         <>
-            {status === 'unauthenticated' ? (<Link href={'/api/auth/signin'} className={s.link}>Войти</Link>)
+            {!isSignedIn ? (<Link href={'/login'} className={s.link}>Войти</Link>)
                 : (<>
                     <Link href={'/write'} className={s.link}>Новый пост</Link>
                     <span className={s.link} onClick={() => {
@@ -31,7 +30,7 @@ const AuthLinks = () => {
                     <Link href={'/'}>Главная</Link>
                     <Link href={'/'}>О нас</Link>
                     <Link href={'/'}>Контакты</Link>
-                    {status === 'unauthenticated' ? (<Link href={'/api/auth/signin'}>Войти</Link>)
+                    {!isSignedIn ? (<Link href={'/login'}>Войти</Link>)
                         : (<>
                             <Link href={'/write'}>Новый пост</Link>
                             <span onClick={() => signOut()}>Выйти</span>
