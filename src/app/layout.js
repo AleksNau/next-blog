@@ -1,4 +1,5 @@
 import './globals.css'
+import 'react-quill/dist/quill.snow.css'
 import {Golos_Text} from 'next/font/google'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from "../components/Footer/Footer";

@@ -10,7 +10,7 @@ import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
 import {getData} from "@/app/utils/data";
 import {useSession} from "next-auth/react";
-
+import {useUser} from "@clerk/clerk-react";
 
 const storage = getStorage(app);
 
@@ -20,9 +20,10 @@ const WritePage = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
     const router = useRouter();
-    const {data} = useSession()
+    
+    const {user} = useUser();
 
-    console.log("session user.name "+ data.user.email)
+    console.log("session user.name "+ user)
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
@@ -59,6 +60,7 @@ const WritePage = () => {
 
 
     const handleEditorChange = (newContent) => {
+        console.log(newContent)
         setValue(newContent);
     };
 
@@ -123,9 +125,9 @@ const WritePage = () => {
             count =  res.count;
         })
 
-        const res = await fetch("https://www.tablefun.ru/api/posts", {
+        const res = await fetch("http://localhost:3000/api/posts", {
             method: "POST",
-            body: JSON.stringify({title, desc: value, img: media, catSlug: "new", slug: count + 1,userEmail:data.user.email})
+            body: JSON.stringify({title, desc: value, img: media, catSlug: "new", slug: count + 1,userEmail:'omegatorn412@gmail.com'})
         });
         if (res.ok) {
             console.log("res: "+res)
@@ -163,14 +165,14 @@ const WritePage = () => {
 
                 <div>
                     <div className="h-screen w-screen flex items-center flex-col">
-                        <div className="h-full w-[90vw]">
+                        <div className=" w-[90vw]">
                             <QuillEditor
                                 value={value}
-                                onChange={setValue}
+                                onChange={handleEditorChange}
                                 modules={quillModules}
                                 formats={quillFormats}
                                 className="w-full h-[70%] mt-10 bg-white"
-                                theme={'snow'}
+                                theme='snow'
                             />
                         </div>
                     </div>
