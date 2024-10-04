@@ -1,5 +1,5 @@
 'use client'
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState,useContext} from 'react';
 import s from "./writePage.module.scss";
 import Image from "next/image";
 
@@ -8,22 +8,22 @@ import {app} from "@/app/utils/firebase";
 
 import {useRouter} from "next/navigation";
 import dynamic from "next/dynamic";
-import {getData} from "@/app/utils/data";
-import {useSession} from "next-auth/react";
-import {useUser} from "@clerk/clerk-react";
 
+import {useUser} from "@clerk/clerk-react";
+import {getData,getCategoryData} from "@/app/utils/data";
+import {MyContext} from "@/context/MyContext";
 const storage = getStorage(app);
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
+
 const WritePage = () => {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
-    const router = useRouter();
-    
+    const cat = useContext(MyContext)
     const {user} = useUser();
 
-    console.log("session user.name "+ user)
+    console.log(cat)
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
@@ -33,7 +33,7 @@ const WritePage = () => {
             [{ header: [1, 2, 3, false] }],
             ['bold', 'italic', 'underline', 'strike', 'blockquote'],
             [{ list: 'ordered' }, { list: 'bullet' }],
-            ['link', 'image'],
+            ['link'],
             [{ align: [] }],
             [{ color: [] }],
             ['code-block'],
@@ -117,8 +117,6 @@ const WritePage = () => {
     }, [file])
 
 
-
-
     const handleSubmit = async () => {
         let count;
         const data2 = await getData().then((res) => {
@@ -177,9 +175,17 @@ const WritePage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <button className={s.publish} onClick={handleSubmit}>Publish</button>
+                <input type="text" list="options"/>
 
+            </div>
+            <datalist id="options">
+
+            {cat?.map(item => {
+        return (
+            <option value={item.title} key={item.id}/>)
+        })}
+</datalist>
+            <button className={s.publish} onClick={handleSubmit}>Publish</button>
         </div>
     );
 };

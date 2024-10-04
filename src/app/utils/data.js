@@ -39,3 +39,4 @@ export const getCategoryData = async () => {
 
     return res.json()
 }
+

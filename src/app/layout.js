@@ -4,9 +4,13 @@ import {Golos_Text} from 'next/font/google'
 import NavBar from '../components/NavBar/NavBar'
 import Footer from "../components/Footer/Footer";
 import {ThemeContextProvider} from "@/context/ThemeContext";
+import {MyProvider} from "@/context/MyContext";
+import {getCategoryData} from "@/app/utils/data";
 import {
     ClerkProvider,
   } from '@clerk/nextjs'
+ 
+
 
 /*import ThemeProvider from "@/providers/ThemeProvider"; использую провайдер2 за место так как не работает*/
 
@@ -25,20 +29,23 @@ export const metadata = {
     description: 'Блог о настольных играх',
 }
 
-export default function RootLayout({children}) {
+export default async function RootLayout({children}) {
+let cat = await getCategoryData();
     return (
         <html lang="en">
         <body className={inter.className}>
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
             <ThemeContextProvider>
                 <ThemeContextProvider2>
-                    <div className={'container'}>
+                    <MyProvider>
+                    <div className={'container'} category={cat}>
                         <div className="wrapper">
                             <NavBar/>
                             {children}
                             <Footer/>
                         </div>
                     </div>
+                    </MyProvider>
                 </ThemeContextProvider2>
             </ThemeContextProvider>
             </ClerkProvider>
