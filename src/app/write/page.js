@@ -178,11 +178,12 @@ const WritePage = () => {
                 <input type="text" list="options"/>
 
             </div>
+            <input list="options" />
             <datalist id="options">
 
             {cat?.map(item => {
         return (
-            <option value={item.title} key={item.id}/>)
+            <option value={item.slug} key={item.id}>{item.title}</option>)
         })}
 </datalist>
             <button className={s.publish} onClick={handleSubmit}>Publish</button>
