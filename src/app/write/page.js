@@ -24,7 +24,7 @@ const WritePage = () => {
     const cat = useContext(MyContext)
     const {user} = useUser();
 
-    console.log(cat)
+    console.log(user)
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
@@ -138,30 +138,9 @@ const WritePage = () => {
         <div className={s.container}>
             <input type="text" placeholder='Title' className={s.input}
                    onChange={event => setTitle(event.target.value)}/>
+            
             <div className={s.editor}>
-                <button className={s.button} onClick={() => setOpen(!open)}>
-                    <Image src={'/sun.png'} alt={'sun'} className={s.plus} width={16} height={16}/>
-                </button>
-
-                {open &&
-                    (
-                        <div className={s.add}>
-                            <input type="file" id='image' onChange={event => setFile(event.target.files[0])}/>
-
-                            <button className={s.addButton} onClick={() => setOpen(!open)}>
-                                <label htmlFor="image"><Image src={'/sun.png'} alt={'image'} className={s.plus}
-                                                              width={16} height={16}/></label>
-                            </button>
-
-
-                            <button className={s.addButton}>
-                                <Image src={'/sun.png'} alt={'image'} className={s.plus} width={16} height={16}/>
-                            </button>
-                            <button className={s.addButton}>
-                                <Image src={'/sun.png'} alt={'image'} className={s.plus} width={16} height={16}/>
-                            </button>
-                        </div>)}
-
+            <UploadFile/>
                 <div>
                     <div className="h-screen w-screen flex items-center flex-col">
                         <div className=" w-[90vw]">
@@ -174,19 +153,18 @@ const WritePage = () => {
                                 theme='snow'
                             />
                         </div>
-                    </div>
-                </div>
-
-            </div>
-            <select list="options" >
-      
+                        <select list="options" >
             {cat?.map(item => {
                 return (
                     <option value={item.slug} key={item.id}>{item.title}</option>)
                 })}
-                </select>
-  
-            <UploadFile/>
+            </select>
+                    </div>
+                </div>
+
+            </div>
+
+            
             <button className={s.publish} onClick={handleSubmit}>Publish</button>
         </div>
     );

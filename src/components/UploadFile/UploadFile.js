@@ -2,12 +2,10 @@
 
 import React, {useContext, useEffect, useState} from 'react';
 import s from "./uploadFile.module.scss";
-import Image from "next/image";
-import {ThemeContext} from "@/context/ThemeContext";
 
-
-
-
+import {getStorage, ref, uploadBytesResumable, getDownloadURL} from "firebase/storage";
+import {app} from "@/app/utils/firebase";
+const storage = getStorage(app);
 const UploadFile = () => {
 
     const [file, setFile] = useState(null);
