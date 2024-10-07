@@ -19,16 +19,15 @@ const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
 
 
 const WritePage = () => {
-    const [open, setOpen] = useState(false);
     const [value, setValue] = useState('');
     const cat = useContext(MyContext)
     const {user} = useUser();
 
-    console.log(user)
+    console.log(user.primaryEmailAddress.emailAddress)
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");
-
+    const [category, setCategory] = useState("");
     const quillModules = {
         toolbar: [
             [{ header: [1, 2, 3, false] }],
@@ -61,61 +60,8 @@ const WritePage = () => {
 
 
     const handleEditorChange = (newContent) => {
-        console.log(newContent)
         setValue(newContent);
     };
-
-    useEffect(() => {
-        const upload = () => {
-            const name = new Date().getTime() + file.name
-            const storageRef = ref(storage, name);
-            const uploadTask = uploadBytesResumable(storageRef, file);
-
-// Listen for state changes, errors, and completion of the upload.
-            uploadTask.on('state_changed',
-                (snapshot) => {
-
-                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                    console.log('Upload is ' + progress + '% done');
-                    switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                            break;
-                        case 'running':
-                            console.log('Upload is running');
-                            break;
-                    }
-                },
-                (error) => {
-                    // A full list of error codes is available at
-                    // https://firebase.google.com/docs/storage/web/handle-errors
-                    switch (error.code) {
-                        case 'storage/unauthorized':
-                            // User doesn't have permission to access the object
-                            break;
-                        case 'storage/canceled':
-                            // User canceled the upload
-                            break;
-
-                        // ...
-
-                        case 'storage/unknown':
-                            // Unknown error occurred, inspect error.serverResponse
-                            break;
-                    }
-                },
-                () => {
-                    // Upload completed successfully, now we can get the download URL
-                    getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setMedia(downloadURL)
-                        console.log('File available at', downloadURL);
-                    });
-                }
-            );
-        }
-        file && upload()
-
-    }, [file])
 
 
     const handleSubmit = async () => {
@@ -126,7 +72,7 @@ const WritePage = () => {
 
         const res = await fetch("http://localhost:3000/api/posts", {
             method: "POST",
-            body: JSON.stringify({title, desc: value, img: media, catSlug: "new", slug: count + 1,userEmail:'omegatorn412@gmail.com'})
+            body: JSON.stringify({title, desc: value, img: media, catSlug: category, slug: count + 1,userEmail:'omegatorn412@gmail.com'})
         });
         if (res.ok) {
             console.log("res: "+res)
@@ -140,7 +86,7 @@ const WritePage = () => {
                    onChange={event => setTitle(event.target.value)}/>
             
             <div className={s.editor}>
-            <UploadFile/>
+            <UploadFile setMedia={setMedia}/>
                 <div>
                     <div className="h-screen w-screen flex items-center flex-col">
                         <div className=" w-[90vw]">
@@ -153,7 +99,7 @@ const WritePage = () => {
                                 theme='snow'
                             />
                         </div>
-                        <select list="options" >
+                        <select list="options" onChange={(e)=>{setCategory(e.target.value)}}>
             {cat?.map(item => {
                 return (
                     <option value={item.slug} key={item.id}>{item.title}</option>)
