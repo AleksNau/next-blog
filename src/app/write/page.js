@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 import {useUser} from "@clerk/clerk-react";
 import {getData,getCategoryData} from "@/app/utils/data";
 import {MyContext} from "@/context/MyContext";
+import UploadFile from '@/components/UploadFile/UploadFile'
 const storage = getStorage(app);
 
 const QuillEditor = dynamic(() => import('react-quill'), { ssr: false });
@@ -175,17 +176,17 @@ const WritePage = () => {
                         </div>
                     </div>
                 </div>
-                <input type="text" list="options"/>
 
             </div>
-            <input list="options" />
-            <datalist id="options">
-
+            <select list="options" >
+      
             {cat?.map(item => {
-        return (
-            <option value={item.slug} key={item.id}>{item.title}</option>)
-        })}
-</datalist>
+                return (
+                    <option value={item.slug} key={item.id}>{item.title}</option>)
+                })}
+                </select>
+  
+            <UploadFile/>
             <button className={s.publish} onClick={handleSubmit}>Publish</button>
         </div>
     );
