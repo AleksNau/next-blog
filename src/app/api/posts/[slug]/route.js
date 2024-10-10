@@ -15,10 +15,10 @@ export const GET = async (request, {params}) => {
                 user: true,
             }
         });
-        await prisma.post.update({
+        /*await prisma.post.update({
             where: { slug: slug },
             data: {views: {increment: 1}}
-        });
+        });*/
 
         return new NextResponse(JSON.stringify(post, {status_: 200}))
     } catch (err) {

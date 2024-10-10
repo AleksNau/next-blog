@@ -21,6 +21,17 @@ export const getSinglePost = async (slug) => {
     return res.json()
 }
 
+
+export const getFeaturedPost = async () => {
+    const res = await fetch(`http://localhost:3000/api/posts/featured`, {cache: 'no-store'});
+
+    if (!res.ok) {
+        throw new Error('Нет featured поста')
+    }
+
+    return res.json()
+}
+
 export const handleNumber = async () => {
     let count;
     const data = await getData().then((res) => {
