@@ -105,6 +105,12 @@ const WritePage = () => {
                     <option value={item.slug} key={item.id}>{item.title}</option>)
                 })}
             </select>
+            <div class={s.container_link}>
+  <label class={s.link_label}>
+      Add Referal Link
+  </label>
+  <input class={s.reflink} placeholder="Type here..." />
+</div>
                     </div>
                 </div>
 

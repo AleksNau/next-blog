@@ -28,6 +28,7 @@ const UploadFile = ({setMedia}) => {
         data: body
       }).then(res => {
         console.log(res.data.data.display_url);
+        setMedia(res.data.data.display_url)
     })
 
     
