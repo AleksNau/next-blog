@@ -3,12 +3,14 @@ import React, {useState} from 'react';
 import s from "./authLinks.module.scss";
 import Link from "next/link";
 import {useUser} from "@clerk/clerk-react";
-import {signOut} from "next-auth/react"
+import { useClerk } from '@clerk/nextjs'
 
 const AuthLinks = () => {
     const [open, setOpen] = useState(false);
     const {user,isLoaded,isSignedIn} = useUser();
-    console.log(isSignedIn)
+    const { signOut } = useClerk();
+
+
     return (
         <>
             {!isSignedIn ? (<Link href={'/login'} className={s.link}>Войти</Link>)

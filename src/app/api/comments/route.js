@@ -32,9 +32,9 @@ export const GET = async (request) => {
 
 export const POST = async (request) => {
 
-    const session = await auth()
-
-    if (!session) {
+    
+    const { userId } = getAuth(request)
+    if (!userId) {
         return new NextResponse(JSON.stringify({message: "Для коментария нужно авторизоваться"}, {status: 401}))
     }
 

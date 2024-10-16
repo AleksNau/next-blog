@@ -1,11 +1,10 @@
 import {NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
-
+import { getAuth } from '@clerk/nextjs/server'
 
 //SINGLE POST
 export const GET = async (request, {params}) => {
     const slug = Number(params.slug)
-
     try {
         const post = await prisma.post.findUnique({
             where: {

@@ -1,13 +1,14 @@
 import {NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
-import {auth} from "@/auth";
+import { getAuth } from '@clerk/nextjs/server'
 
 export const GET = async (req) => {
     const {searchParams} = new URL(req.url);
     const cat = searchParams.get("cat");
     const page = searchParams.get('page')
     const POSTS_PER_PAGE = 3;
-
+    const { userId } = getAuth(req)
+console.log("get!get! "+userId)
     const query = {
         take: POSTS_PER_PAGE,
         skip: POSTS_PER_PAGE * (page - 1),
@@ -40,6 +41,6 @@ export const POST = async (request) => {
         return new NextResponse(JSON.stringify(post, {status: 200}))
     } catch (err) {
         console.log(err)
-        return new NextResponse(JSON.stringify({message: "Постов не создан"}, {status: 500}))
+        return new NextResponse(JSON.stringify({message: "Пост не создан"}, {status: 500}))
     }
 }

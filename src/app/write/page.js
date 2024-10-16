@@ -23,7 +23,7 @@ const WritePage = () => {
     const cat = useContext(MyContext)
     const {user} = useUser();
 
-    console.log(user.primaryEmailAddress.emailAddress)
+    
     const [file, setFile] = useState(null);
     const [media, setMedia] = useState("");
     const [title, setTitle] = useState("");

@@ -8,8 +8,8 @@ import {MyProvider} from "@/context/MyContext";
 import {getCategoryData} from "@/app/utils/data";
 import {
     ClerkProvider,
-  } from '@clerk/nextjs'
- 
+  } from '@clerk/nextjs';
+  import { auth, currentUser } from '@clerk/nextjs/server'
 
 
 /*import ThemeProvider from "@/providers/ThemeProvider"; использую провайдер2 за место так как не работает*/
@@ -30,6 +30,10 @@ export const metadata = {
 }
 
 export default async function RootLayout({children}) {
+    const { userId } = auth()
+    const user = await currentUser()
+    console.log("layout"+userId)
+    console.log("layout"+user)
 let cat = await getCategoryData();
     return (
         <html lang="en">

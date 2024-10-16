@@ -1,7 +1,8 @@
 import {NextResponse} from "next/server";
 import prisma from "@/lib/prisma";
 
-export const GET = async () => {
+export const GET = async (req) => {
+
     try {
         const categories = await prisma.category.findMany();
         return new NextResponse(JSON.stringify(categories, {status_: 200}))
