@@ -32,8 +32,6 @@ export const metadata = {
 export default async function RootLayout({children}) {
     const { userId } = auth()
     const user = await currentUser()
-    console.log("layout"+userId)
-    console.log("layout"+user)
 let cat = await getCategoryData();
     return (
         <html lang="en">

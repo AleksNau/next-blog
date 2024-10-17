@@ -83,10 +83,27 @@
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  padding-top: 7px;
 }
 .container_link {
   width: 100%;
   max-width: 24rem;
+}
+
+.select {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 24rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  background-color: transparent;
+  color: var(--textColor);
 }
 
 .reflink {
@@ -100,11 +117,7 @@
   font-size: 0.875rem;
   line-height: 1.25rem;
   background-color: transparent;
-  transition-property: background-color, border-color, color, fill, stroke,
-    opacity, box-shadow, transform;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 300ms;
-  transition-duration: 300ms;
+  
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   color: var(--textColor);
 }

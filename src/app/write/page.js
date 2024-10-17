@@ -101,6 +101,7 @@ const WritePage = () => {
             </div>
             <select
               list="options"
+              className={s.select}
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
@@ -113,9 +114,9 @@ const WritePage = () => {
                 );
               })}
             </select>
-            <div class={s.container_link}>
-              <label class={s.link_label}>Add Referal Link</label>
-              <input class={s.reflink} placeholder="Type here..." />
+            <div className={s.container_link}>
+              <label className={s.link_label}>Добавить реферальную ссылку</label>
+              <input className={s.reflink} placeholder="https://" />
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ export const GET = async (req) => {
     const page = searchParams.get('page')
     const POSTS_PER_PAGE = 3;
     const { userId } = getAuth(req)
-console.log("get!get! "+userId)
+    
     const query = {
         take: POSTS_PER_PAGE,
         skip: POSTS_PER_PAGE * (page - 1),
