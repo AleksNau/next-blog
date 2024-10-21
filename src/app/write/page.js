@@ -8,8 +8,7 @@ import { useUser } from "@clerk/clerk-react";
 import { getData, getCategoryData } from "@/app/utils/data";
 import { MyContext } from "@/context/MyContext";
 import UploadFile from "@/components/UploadFile/UploadFile";
-
-
+import DinamicInput from "@/components/DinamicInput/DinamicInput";
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
 const WritePage = () => {
@@ -19,7 +18,10 @@ const WritePage = () => {
 
   const [media, setMedia] = useState("");
   const [title, setTitle] = useState("");
+  const [refLInk, setRefLink] = useState("");
   const [category, setCategory] = useState("");
+  const [imageList, setImageList] = useState([{ value: "" }]);
+
   const quillModules = {
     toolbar: [
       [{ header: [1, 2, 3, false] }],
@@ -58,8 +60,7 @@ const WritePage = () => {
     const data2 = await getData().then((res) => {
       count = res.count;
     });
-
-    const res = await fetch("http://localhost:3000/api/posts", {
+   /*  const res = await fetch("http://localhost:3000/api/posts", {
       method: "POST",
       body: JSON.stringify({
         title,
@@ -72,8 +73,19 @@ const WritePage = () => {
     });
     if (res.ok) {
       console.log("res: " + res);
-      /* router.push("/")*/
-    }
+      router.push("/")
+    }*/
+    console.log({
+      title,
+      desc: value,
+      img: media,
+      catSlug: category,
+      slug: count + 1,
+      userEmail: user?.primaryEmailAddress.emailAddress? user.primaryEmailAddress.emailAddress: "test@mail.ru",
+      referal:refLInk,
+      photos:imageList,
+    })
+      
   };
 
   return (
@@ -115,9 +127,12 @@ const WritePage = () => {
               })}
             </select>
             <div className={s.container_link}>
-              <label className={s.link_label}>Добавить реферальную ссылку</label>
-              <input className={s.reflink} placeholder="https://" />
+              <label className={s.link_label}>
+                Добавить реферальную ссылку
+              </label>
+              <input className={s.reflink} placeholder="https://" onChange={(e)=>setRefLink(e.target.value)}/>
             </div>
+            <DinamicInput inputFields={imageList} setInputFields={setImageList}/> 
           </div>
         </div>
       </div>
