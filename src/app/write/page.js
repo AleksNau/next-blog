@@ -92,7 +92,7 @@ const WritePage = () => {
     <div className={s.container}>
       <input
         type="text"
-        placeholder="Title"
+        placeholder="Заголовок..."
         className={s.input}
         onChange={(event) => setTitle(event.target.value)}
       />
@@ -107,6 +107,7 @@ const WritePage = () => {
                 onChange={handleEditorChange}
                 modules={quillModules}
                 formats={quillFormats}
+                placeholder="Основной текст"
                 className="w-full h-[70%] mt-10 bg-white"
                 theme="snow"
               />
@@ -120,7 +121,7 @@ const WritePage = () => {
             >
               {cat?.map((item) => {
                 return (
-                  <option value={item.slug} key={item.id}>
+                  <option className={s.option} value={item.slug} key={item.id}>
                     {item.title}
                   </option>
                 );
@@ -138,7 +139,7 @@ const WritePage = () => {
       </div>
 
       <button className={s.publish} onClick={handleSubmit}>
-        Publish
+        Опубликовать
       </button>
     </div>
   );

@@ -36,8 +36,8 @@
 }
 
 .deleteBtn {
-  width: 45px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,6 +55,7 @@
 }
 
 .addBtn {
+  min-height: 38px;
   display: flex;
   align-items: center;
   gap: 10px;

@@ -110,6 +110,11 @@
   outline: 1.5px solid #2485ee;
 }
 
+.option {
+  background-color: var(--bg);
+  color: var(--textColor);
+}
+
 .reflink {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;

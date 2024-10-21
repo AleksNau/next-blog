@@ -4,7 +4,7 @@ export const getData = async (page = 1) => {
     const res = await fetch(`http://localhost:3000/api/posts?page=${page}`, {cache: 'no-store'});
 
     if (!res.ok) {
-        throw new Error('Нет постов')
+        throw new Error('Нет данных')
     }
 
     return res.json()
@@ -42,10 +42,10 @@ return count
 }
 
 export const getCategoryData = async () => {
-    const res = await fetch('http://localhost:3000/api/categories', {cache: 'no-store'});
+    const res = await fetch('http://localhost:3000/api/categories');
 
     if (!res.ok) {
-        throw new Error('Не та категория')
+        throw new Error('Нет данных по категориям')
     }
 
     return res.json()
