@@ -3,7 +3,22 @@
 import React, {useState} from 'react';
 import s from "./uploadFile.module.scss";
 import axios from "axios";
+import Resizer from "react-image-file-resizer";
 
+const resizeFile = (file) =>
+  new Promise((resolve) => {
+    Resizer.imageFileResizer(
+      file,
+      300,
+      300,
+      "JPEG",
+      100,
+      0,
+      (uri) => {
+        resolve(uri);
+      }
+    );
+  });
 
 const UploadFile = ({setMedia}) => {
     const [file, setFile] = useState(null);
@@ -16,10 +31,8 @@ const UploadFile = ({setMedia}) => {
   const handleUpload = async () => {
   
       console.log('Uploading file...');
-
-      const key_imbb = process.env.NEXT_IBB;
       let body = new FormData()
-      body.set('key', key_imbb)
+      body.set('key', "e3e49227220053333d1ca32c945c4c34")
       body.append('image', file)
   
       return axios({

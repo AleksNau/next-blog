@@ -22,7 +22,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  flex: 1;
   font-size: 20px;
 }
 
@@ -55,6 +54,9 @@
   }
   .logo {
     text-align: left;
+  }
+  .links {
+    flex:1;
   }
 }
 

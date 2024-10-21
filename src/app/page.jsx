@@ -4,7 +4,7 @@ import Featured from "@/components/Featured/Featured";
 import CategoryList from "@/components/CategoryList/CategoryList";
 import CardList from "@/components/Cardlist/CardList";
 import Menu from "@/components/Menu/Menu";
-import {getData, getSinglePost,getCategoryData,getFeaturedPost} from "@/app/utils/data";
+import {getData,getCategoryData,getFeaturedPost} from "@/app/utils/data";
 
 
 export default async function Home({searchParams}) {
