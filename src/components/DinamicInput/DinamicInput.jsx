@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import s from "./DinamicInput.module.scss";
+import {useForm} from "react-hook-form";
+import {titleValidation} from '@/settings/validation';
 
 const DinamicInput = ({inputFields,setInputFields}) => {
+
 
   // Function to add a new input field
   const handleAddFields = () => {
@@ -31,7 +34,7 @@ const DinamicInput = ({inputFields,setInputFields}) => {
         <div className={s.inputContainer} key={index}>
           <input
           className={s.inputLink}
-            type="text"
+            type="url"
             placeholder="https://"
             value={inputField.value}
             onChange={(e) => handleValueChange(index, e)}

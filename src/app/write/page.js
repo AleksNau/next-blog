@@ -2,6 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import s from "./writePage.module.scss";
 import Image from "next/image";
+import {useForm} from "react-hook-form";
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useUser } from "@clerk/clerk-react";
@@ -9,10 +10,13 @@ import { getData, getCategoryData } from "@/app/utils/data";
 import { MyContext } from "@/context/MyContext";
 import UploadFile from "@/components/UploadFile/UploadFile";
 import DinamicInput from "@/components/DinamicInput/DinamicInput";
+import {titleValidation} from '@/settings/validation';
+
+
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
 const WritePage = () => {
-  const [value, setValue] = useState("");
+  const [valueQuil, setValueQuil] = useState("");
   const cat = useContext(MyContext);
   const { user } = useUser();
 
@@ -21,6 +25,15 @@ const WritePage = () => {
   const [refLInk, setRefLink] = useState("");
   const [category, setCategory] = useState("");
   const [imageList, setImageList] = useState([{ value: "" }]);
+
+  const {
+    register,
+    formState: {errors, isValid},
+    getValues,
+    setValue,
+    watch,
+} = useForm({mode: "onChange"});
+
 
   const quillModules = {
     toolbar: [
@@ -52,10 +65,10 @@ const WritePage = () => {
   ];
 
   const handleEditorChange = (newContent) => {
-    setValue(newContent);
+    setValueQuil(newContent);
   };
 
-  const handleSubmit = async () => {
+  const handleSubmitFirst = async () => {
     let count;
     const data2 = await getData().then((res) => {
       count = res.count;
@@ -77,7 +90,7 @@ const WritePage = () => {
     }*/
     console.log({
       title,
-      desc: value,
+      desc: valueQuil,
       img: media,
       catSlug: category,
       slug: count + 1,
@@ -85,17 +98,22 @@ const WritePage = () => {
       referal:refLInk,
       photos:imageList,
     })
+
+    console.log(getValues())
       
   };
 
   return (
-    <div className={s.container}>
+    <form id="form" className={s.container}>
       <input
         type="text"
         placeholder="Заголовок..."
         className={s.input}
         onChange={(event) => setTitle(event.target.value)}
+        {...register('title',{ ...titleValidation
+      })} noValidate
       />
+      <span>{errors?.title?.message}&nbsp;</span>
 
       <div className={s.editor}>
         <UploadFile setMedia={setMedia} />
@@ -103,7 +121,7 @@ const WritePage = () => {
           <div className="h-screen w-screen flex items-center flex-col">
             <div className=" w-[90vw]">
               <QuillEditor
-                value={value}
+                value={valueQuil}
                 onChange={handleEditorChange}
                 modules={quillModules}
                 formats={quillFormats}
@@ -118,6 +136,7 @@ const WritePage = () => {
               onChange={(e) => {
                 setCategory(e.target.value);
               }}
+              {...register('catSlug')}
             >
               {cat?.map((item) => {
                 return (
@@ -131,17 +150,19 @@ const WritePage = () => {
               <label className={s.link_label}>
                 Добавить реферальную ссылку
               </label>
-              <input className={s.reflink} placeholder="https://" onChange={(e)=>setRefLink(e.target.value)}/>
+              <input className={s.reflink} placeholder="https://" type="url" onChange={(e)=>setRefLink(e.target.value)} {...register('referal')}/>
             </div>
             <DinamicInput inputFields={imageList} setInputFields={setImageList}/> 
           </div>
         </div>
       </div>
 
-      <button className={s.publish} onClick={handleSubmit}>
+      <button className={s.publish} onClick={(e)=> {
+        e.preventDefault();
+        handleSubmitFirst()}}>
         Опубликовать
       </button>
-    </div>
+    </form>
   );
 };
 
