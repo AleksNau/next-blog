@@ -4,7 +4,7 @@ import Menu from "@/components/Menu/Menu";
 import Image from "next/image";
 import Comments from "@/components/Comments/Comments";
 import {getSinglePost} from "@/app/utils/data";
-
+import ImageSlider from '@/components/ImageSlider/ImageSlider'
 
 
 
@@ -28,20 +28,26 @@ const SinglePage = async ({params: {slug}}) => {
                         </div>
                     </div>
                 </div>
+                
                 <div className={s.imageContainer}>
                     {data.img && <Image src={data.img} alt={'Изображение поста'} fill className={s.image}/>}
                 </div>
             </div>
+            
             <div className={s.content}>
                 <div className={s.post}>
                     <div className={s.desc} dangerouslySetInnerHTML={{ __html: data.desc }} >
-                    </div>
+                    </div>       
+                    <ImageSlider/>
                     <div className={s.comment}>
+                    
                         {/*<Comments postSlug={slug}/>*/}
                     </div>
+                    
                 </div>
                 <Menu/>
             </div>
+            
         </div>
     );
 };

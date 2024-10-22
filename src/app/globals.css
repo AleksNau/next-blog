@@ -91,3 +91,7 @@ a {
 .quill > .ql-container > .ql-editor.ql-blank::before {
     color: #b3b3b3;
 }
+
+.slider-my {
+    max-width: 700px;
+}
