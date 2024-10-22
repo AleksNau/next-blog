@@ -6,6 +6,7 @@ const DinamicInput = ({inputFields,setInputFields}) => {
   // Function to add a new input field
   const handleAddFields = () => {
     setInputFields([...inputFields, { value: "" }]);
+    console.log(inputFields)
   };
 
   // Function to remove an input field by index

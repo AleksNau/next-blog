@@ -3,22 +3,6 @@
 import React, {useState} from 'react';
 import s from "./uploadFile.module.scss";
 import axios from "axios";
-import Resizer from "react-image-file-resizer";
-
-const resizeFile = (file) =>
-  new Promise((resolve) => {
-    Resizer.imageFileResizer(
-      file,
-      300,
-      300,
-      "JPEG",
-      100,
-      0,
-      (uri) => {
-        resolve(uri);
-      }
-    );
-  });
 
 const UploadFile = ({setMedia}) => {
     const [file, setFile] = useState(null);
