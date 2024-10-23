@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import s from "./writePage.module.scss";
 import Image from "next/image";
-import {useForm} from "react-hook-form";
+import { useForm, FormProvider, useFormContext } from "react-hook-form"
 import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 import { useUser } from "@clerk/clerk-react";
@@ -11,7 +11,7 @@ import { MyContext } from "@/context/MyContext";
 import UploadFile from "@/components/UploadFile/UploadFile";
 import DinamicInput from "@/components/DinamicInput/DinamicInput";
 import {titleValidation} from '@/settings/validation';
-
+import {quillModules,quillFormats} from "@/app/utils/quil"
 
 const QuillEditor = dynamic(() => import("react-quill"), { ssr: false });
 
@@ -26,43 +26,15 @@ const WritePage = () => {
   const [category, setCategory] = useState("");
   const [imageList, setImageList] = useState([{ value: "" }]);
 
+  const methods = useForm({mode: "onChange"});
   const {
     register,
     formState: {errors, isValid},
     getValues,
     setValue,
     watch,
-} = useForm({mode: "onChange"});
+} = methods;
 
-
-  const quillModules = {
-    toolbar: [
-      [{ header: [1, 2, 3, false] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link"],
-      [{ align: [] }],
-      [{ color: [] }],
-      ["code-block"],
-      ["clean"],
-    ],
-  };
-
-  const quillFormats = [
-    "header",
-    "bold",
-    "italic",
-    "underline",
-    "strike",
-    "blockquote",
-    "list",
-    "bullet",
-    "link",
-    "image",
-    "align",
-    "color",
-    "code-block",
-  ];
 
   const handleEditorChange = (newContent) => {
     setValueQuil(newContent);
@@ -100,10 +72,12 @@ const WritePage = () => {
     })
 
     console.log(getValues())
-      
+
   };
 
   return (
+// pass all methods into the context
+<FormProvider {...methods}>
     <form id="form" className={s.container}>
       <input
         type="text"
@@ -120,6 +94,7 @@ const WritePage = () => {
         <div>
           <div className="h-screen w-screen flex items-center flex-col">
             <div className=" w-[90vw]">
+//внешне подключить надо
               <QuillEditor
                 value={valueQuil}
                 onChange={handleEditorChange}
@@ -129,7 +104,9 @@ const WritePage = () => {
                 className="w-full h-[70%] mt-10 bg-white"
                 theme="snow"
               />
+
             </div>
+//Обработал
             <select
               list="options"
               className={s.select}
@@ -138,6 +115,7 @@ const WritePage = () => {
               }}
               {...register('catSlug')}
             >
+
               {cat?.map((item) => {
                 return (
                   <option className={s.option} value={item.slug} key={item.id}>
@@ -152,7 +130,8 @@ const WritePage = () => {
               </label>
               <input className={s.reflink} placeholder="https://" type="url" onChange={(e)=>setRefLink(e.target.value)} {...register('referal')}/>
             </div>
-            <DinamicInput inputFields={imageList} setInputFields={setImageList}/> 
+//сделать проброс в компонент, и сохранить в нужный объект
+            <DinamicInput inputFields={imageList} setInputFields={setImageList}/>
           </div>
         </div>
       </div>
@@ -163,6 +142,7 @@ const WritePage = () => {
         Опубликовать
       </button>
     </form>
+</FormProvider>
   );
 };
 
