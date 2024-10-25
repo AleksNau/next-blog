@@ -6,7 +6,6 @@ import {titleValidation} from '@/settings/validation';
 const DinamicInput = ({inputFields,setInputFields}) => {
  const { register,control } = useFormContext() // retrieve all hook methods
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
-    control, // control props comes from useForm (optional: if you are using FormProvider)
     name: "photos", // unique name for your Field Array
   });
   // Function to add a new input field
@@ -23,13 +22,7 @@ const DinamicInput = ({inputFields,setInputFields}) => {
     remove(index)
   };
 
-  // Function to update the value of an input field
-  const handleValueChange = (index, event) => {
-    const values = [...inputFields];
-    values[index].value = event.target.value;
-    setInputFields(values);
-  };
-//добавляет лишь последний инпут в дату
+
   return (
     <div className={s.container}>
       <h2 className={s.title}>Добавить изображения</h2>
@@ -43,7 +36,7 @@ const DinamicInput = ({inputFields,setInputFields}) => {
 
             onChange={(e) => handleValueChange(index, e)}
 
-                    {...register(`test.${index}.value`)}
+                    {...register(`photos.${index}.value`)}
           />
 
           <button className={s.deleteBtn} onClick={() => handleRemoveFields(inputField.id)}>
