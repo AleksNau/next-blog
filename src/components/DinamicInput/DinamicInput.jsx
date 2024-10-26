@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./DinamicInput.module.scss";
 import { useFormContext,useFieldArray } from "react-hook-form"
-import {titleValidation} from '@/settings/validation';
+import {titleValidation,linkValidation} from '@/settings/validation';
 
 const DinamicInput = () => {
- const { register,control } = useFormContext() // retrieve all hook methods
+ const { register,control,formState:{errors} } = useFormContext() // retrieve all hook methods
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray({
-    name: "photos",
+      control,
+      name: "photos",
     defaultValues: "",// unique name for your Field Array
+      rules: { minLength: {value:10,message: "что то"}},
+      validate:{...linkValidation}
   });
   // Function to add a new input field
   const handleAddFields = () => {
@@ -18,7 +21,6 @@ const DinamicInput = () => {
   const handleRemoveFields = (index) => {
     remove(index)
   };
-
 
   return (
     <div className={s.container}>
@@ -31,12 +33,13 @@ const DinamicInput = () => {
             type="url"
             placeholder="https://"
 
-                    {...register(`photos.${index}.value`)}
+                    {...register(`photos.${index}.value`,linkValidation)}
           />
 
           <button className={s.deleteBtn} onClick={() => handleRemoveFields(inputField.id)}>
             <span>DEL</span>
           </button>
+            <span>{errors.photos?.[index]?.value.message}&nbsp;</span>
         </div>
       ))}
 
