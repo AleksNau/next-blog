@@ -122,10 +122,13 @@ const WritePage = () => {
                     </div>
                 </div>
 
-                <button className={s.publish} onClick={(e) => {
-                    e.preventDefault();
-                    handleSubmitFirst()
-                }}>
+                <button
+                         onClick={(e) => {
+                             e.preventDefault();
+                             handleSubmitFirst()
+                         }}
+                         className={isValid ? (`${s.publish}`) : (`${s.publish} ${s.disPublish}`)}
+                         disabled={!isValid}>
                     Опубликовать
                 </button>
             </form>

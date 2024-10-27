@@ -29,6 +29,10 @@
   transition: opacity 400ms linear;
 }
 
+.disPublish {
+  background-color: #3d3d3d;
+}
+
 .publish:hover {
   opacity: 0.8;
 }
