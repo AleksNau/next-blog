@@ -32,27 +32,23 @@ const WritePage = () => {
         const data2 = await getData().then((res) => {
             count = res.count;
         });
-        /*  const res = await fetch("http://localhost:3000/api/posts", {
+        let formData = getValues();
+        let {photos,referal, ...newObj}= formData;
+        const arrayPhotos = photos.map(function(el) {
+            return el.value;
+          });
+          const arrayReferal = [referal]
+         const res = await fetch("http://localhost:3000/api/posts", {
            method: "POST",
            body: JSON.stringify({
-             title,
-             desc: value,
-             img: media,
-             catSlug: category,
-             slug: count + 1,
-             userEmail: "omegatorn412@gmail.com",
-           }),
+            img: media, slug: count + 1,
+            userEmail: user?.primaryEmailAddress.emailAddress ? user.primaryEmailAddress.emailAddress : "test@mail.ru",photos:arrayPhotos,referal:arrayReferal, ...newObj
+        }),
          });
          if (res.ok) {
            console.log("res: " + res);
-           router.push("/")
-         }*/
-
-        let formData = getValues();
-        console.log({
-            img: media, slug: count + 1,
-            userEmail: user?.primaryEmailAddress.emailAddress ? user.primaryEmailAddress.emailAddress : "test@mail.ru", ...formData
-        })
+  
+         }
 
     };
 

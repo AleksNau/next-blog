@@ -12,8 +12,8 @@ const UploadFile = ({setMedia}) => {
       console.log(e.target.files[0])
   };
 
-  const handleUpload = async () => {
-  
+  const handleUpload = async (e) => {
+    e.preventDefault();
       console.log('Uploading file...');
       let body = new FormData()
       body.set('key', "e3e49227220053333d1ca32c945c4c34")
@@ -51,7 +51,7 @@ const UploadFile = ({setMedia}) => {
       </div>
       </div>
       </div>
-      <button className={s.send}  onClick={handleUpload}>Отправить файл</button>
+      <button className={s.send}  onClick={(e)=>handleUpload(e)}>Отправить файл</button>
         </div>
     );
 };

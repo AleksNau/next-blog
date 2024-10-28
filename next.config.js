@@ -4,7 +4,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'sun1-24.userapi.com',
+                hostname: 'i.ibb.co',
             },
             {
                 protocol: 'https',

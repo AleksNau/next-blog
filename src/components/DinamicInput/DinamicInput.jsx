@@ -9,8 +9,6 @@ const DinamicInput = () => {
         control,
         name: "photos",
         defaultValues: "",
-        rules: {minLength: {value: 10, message: "что то"}},
-        validate: {...linkValidation}
     });
 
     const handleAddFields = () => {
