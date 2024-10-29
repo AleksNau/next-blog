@@ -34,7 +34,6 @@ const AuthLinks = () => {
                     <Link href={'/'}>Контакты</Link>
                     {!isSignedIn ? (<Link href={'/login'}>Войти</Link>)
                         : (<>
-                            <Link href={'/write'}>Новый пост</Link>
                             <span onClick={() => signOut()}>Выйти</span>
                         </>)}
                 </div>)}

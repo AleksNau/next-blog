@@ -68,6 +68,15 @@
   margin-bottom: 20px;
 }
 
+.referal {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--textColor);
+}
+
 @media screen and (max-width: 1536px) {
   .title {
     font-size: 54px;
