@@ -8,6 +8,7 @@ export const MyContext = createContext();
 
 export const MyProvider = ({children}) => {
     const [cat,setCat]=useState();
+    const [selectedCard, handleCardClick] = useState("");
     useEffect(()=> {
         async function fetchPosts() {
             let data = await getCategoryData().then((res)=> {setCat(res)})
@@ -16,5 +17,5 @@ export const MyProvider = ({children}) => {
           fetchPosts()
     },[])
 
-    return <MyContext.Provider value={cat}>{children}</MyContext.Provider>
+    return <MyContext.Provider value={{cat,handleCardClick,selectedCard}}>{children}</MyContext.Provider>
 }

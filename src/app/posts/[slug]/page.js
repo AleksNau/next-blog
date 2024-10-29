@@ -6,13 +6,14 @@ import Comments from "@/components/Comments/Comments";
 import {getSinglePost} from "@/app/utils/data";
 import ImageSlider from '@/components/ImageSlider/ImageSlider'
 import Link from 'next/link';
-
+import Popup from '@/components/Popup/Popup'
 
 
 //Страница поста
 const SinglePage = async ({params: {slug}}) => {
     //тут один пост по запросу
     const data = await getSinglePost(slug);
+
 
     return (
         <div className={s.container}>
@@ -49,7 +50,7 @@ const SinglePage = async ({params: {slug}}) => {
                 </div>
                 <Menu/>
             </div>
-            
+            <Popup/>
         </div>
     );
 };

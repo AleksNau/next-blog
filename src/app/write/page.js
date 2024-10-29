@@ -14,7 +14,7 @@ import {quillFormats, quillModules} from "@/app/utils/quil"
 const QuillEditor = dynamic(() => import("react-quill"), {ssr: false});
 
 const WritePage = () => {
-    const cat = useContext(MyContext);
+    const {cat} = useContext(MyContext);
     const {user} = useUser();
 
     const [media, setMedia] = useState("");
