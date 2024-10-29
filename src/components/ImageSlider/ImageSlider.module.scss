@@ -1,5 +1,105 @@
-.container {
+.wrapper {
+    
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(10,1fr);
+    gap: 10px;
+    max-width: 800px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+.item {
+    object-fit: cover;
+}
+
+.scrollbar {
+    height: 24px;
+    width: 100%;
+    max-width: 800px;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+}
+
+.track {
+    position: relative;
+    height: 2px;
+    width: 100%;
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.track:hover {
+    height: 4px;
+}
+
+.thumb {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: #000;
+    border-radius: 4px;
+    cursor: grab;
+}
+
+.thumb:active {
+    cursor: grabbing;
+    height: 8px;
+    top: -2px;
+}
+
+.thumb ::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:-10px;
+    bottom: -10px;
+}
+
+
+
+.before {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    border: none;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    cursor: pointer;
+    background-color: var(--softTextColor);
+    color: #ccc;
+    transition: linear 0.4s;
+    opacity: 0.2;
+    &:hover {
+        opacity: 0.9;
+    }
+}
+
+.next {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    border-radius: 50%;
+    border: none;
+    top: 50%;
+    transform: translateY(-50%);
+    right:0 ;
+    cursor: pointer;
+    background-color: var(--softTextColor);
+    color: #ccc;
+    transition: linear 0.4s;
+    opacity: 0.2;
+    &:hover {
+        opacity: 0.9;
+    }
 }
