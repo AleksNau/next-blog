@@ -10,13 +10,13 @@ const LoginPage = () => {
     
     const router = useRouter()
 
-    const {user,isLoaded,isSignedIn} = useUser();
+    const {isSignedIn} = useUser();
     useEffect(() => {
 
         if (isSignedIn) {
             router.push('/')
         }
-    }, [router]);
+    }, [router,isSignedIn]);
 
     return (
         <div className={s.container}>
