@@ -27,6 +27,10 @@ const inter = Golos_Text({subsets: ['latin']})
 export const metadata = {
     title: 'Настолки FUN',
     description: 'Блог о настольных играх',
+    verification: {
+        google: 'SKNqL5wia-WO-tnVxfjmfsXf77iE1uReS0gxZhO9CwY',
+        yandex: 'ccb06f132f544386'
+      },
 }
 
 export default async function RootLayout({children}) {
