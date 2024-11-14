@@ -1,63 +1,66 @@
-import './globals.css'
-import 'react-quill/dist/quill.snow.css'
-import {Golos_Text} from 'next/font/google'
-import NavBar from '../components/NavBar/NavBar'
+import "./globals.css";
+import "react-quill/dist/quill.snow.css";
+import { Golos_Text } from "next/font/google";
+import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
-import {ThemeContextProvider} from "@/context/ThemeContext";
-import {MyProvider} from "@/context/MyContext";
-import {getCategoryData} from "@/app/utils/data";
-import {
-    ClerkProvider,
-  } from '@clerk/nextjs';
-  import { auth, currentUser } from '@clerk/nextjs/server'
-
+import { ThemeContextProvider } from "@/context/ThemeContext";
+import { MyProvider } from "@/context/MyContext";
+import { getCategoryData } from "@/app/utils/data";
+import { ClerkProvider } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs/server";
 
 /*import ThemeProvider from "@/providers/ThemeProvider"; использую провайдер2 за место так как не работает*/
 
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic";
 
-
-const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
-const ThemeContextProvider2 = dynamic(() => import("@/providers/ThemeProvider"), {
+const PUBLISHABLE_KEY = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
+const ThemeContextProvider2 = dynamic(
+  () => import("@/providers/ThemeProvider"),
+  {
     ssr: false,
-})
+  }
+);
 
-const inter = Golos_Text({subsets: ['latin']})
+const inter = Golos_Text({ subsets: ["latin"] });
 
 export const metadata = {
-    title: 'Настолки FUN',
-    description: 'Блог о настольных играх',
-    verification: {
-        google: 'SKNqL5wia-WO-tnVxfjmfsXf77iE1uReS0gxZhO9CwY',
-        yandex: 'ccb06f132f544386'
-      },
-}
+  title: "Настолки FUN",
+  description: "Блог о настольных играх",
+  verification: {
+    google: "SKNqL5wia-WO-tnVxfjmfsXf77iE1uReS0gxZhO9CwY",
+    yandex: "ccb06f132f544386",
+  },
+  keywords: ["Настольные игры", "Развлечения", "Блог"],
+  creator: "Alex Now",
+  metadataBase: new URL("https://tablefun.ru"),
+  alternates: {
+    canonical: "/",
+  },
+};
 
-export default async function RootLayout({children}) {
-    const { userId } = auth()
-    const user = await currentUser()
-let cat = await getCategoryData();
-    return (
-        <html lang="en">
-        <body className={inter.className}>
+export default async function RootLayout({ children }) {
+  const { userId } = auth();
+  const user = await currentUser();
+  let cat = await getCategoryData();
+  return (
+    <html lang="en">
+      <body className={inter.className}>
         <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
-            <ThemeContextProvider>
-                <ThemeContextProvider2>
-                    <MyProvider>
-                    <div className={'container'} category={cat}>
-                        <div className="wrapper">
-                            <NavBar/>
-                            {children}
-                            <Footer/>
-                        </div>
-                    </div>
-                    </MyProvider>
-                </ThemeContextProvider2>
-            </ThemeContextProvider>
-            </ClerkProvider>
-
-        
-        </body>
-        </html>
-    )
+          <ThemeContextProvider>
+            <ThemeContextProvider2>
+              <MyProvider>
+                <div className={"container"} category={cat}>
+                  <div className="wrapper">
+                    <NavBar />
+                    {children}
+                    <Footer />
+                  </div>
+                </div>
+              </MyProvider>
+            </ThemeContextProvider2>
+          </ThemeContextProvider>
+        </ClerkProvider>
+      </body>
+    </html>
+  );
 }
