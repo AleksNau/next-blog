@@ -1,0 +1,3 @@
+User-agent: *
+Host: tablefun.ru
+Sitemap: http://tablefun.ru/sitemap.xml
