@@ -10,7 +10,7 @@ import UploadFile from "@/components/UploadFile/UploadFile";
 import DinamicInput from "@/components/DinamicInput/DinamicInput";
 import {linkValidation, titleValidation} from '@/settings/validation';
 import {quillFormats, quillModules} from "@/app/utils/quil"
-
+import {handleSubmitFirst} from "@/app/utils/CreatePost"
 const QuillEditor = dynamic(() => import("react-quill"), {ssr: false});
 
 const WritePage = () => {
@@ -27,28 +27,25 @@ const WritePage = () => {
         control
     } = methods;
 
-    const handleSubmitFirst = async () => {
-        let count;
-        const data2 = await getData().then((res) => {
-            count = res.count;
-        });
-        let formData = getValues();
-        let {photos,referal, ...newObj}= formData;
+    const getinfo = async () => {
+        let formData =  getValues();
+
+        let  {photos,referal, title,desc,catSlug}=  formData;
+
         const arrayPhotos = photos.map(function(el) {
             return el.value;
-          });
-          const arrayReferal = [referal]
-         const res = await fetch("http://localhost:3000/api/posts", {
-           method: "POST",
-           body: JSON.stringify({
-            img: media, slug: count + 1,
-            userEmail: user?.primaryEmailAddress.emailAddress ? user.primaryEmailAddress.emailAddress : "test@mail.ru",photos:arrayPhotos,referal:arrayReferal, ...newObj
-        }),
-         });
-         if (res.ok) {
-           console.log("res: " + res);
-  
-         }
+        });
+        const arrayReferal = [referal]
+        const data = {email:"test@mail.ru",photos:arrayPhotos,referal:arrayReferal, title:title,desc:desc,catSlug:catSlug,media:media}
+        return data
+
+
+    }
+
+    const handleSubmitData = async () => {
+        const  data = await getinfo()
+
+       await handleSubmitFirst(data);
 
     };
 
@@ -121,7 +118,7 @@ const WritePage = () => {
                 <button
                          onClick={(e) => {
                              e.preventDefault();
-                             handleSubmitFirst()
+                             handleSubmitData()
                          }}
                          className={isValid ? (`${s.publish}`) : (`${s.publish} ${s.disPublish}`)}
                          disabled={!isValid}>
