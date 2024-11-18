@@ -1,6 +1,4 @@
-.wrapper {
-    
-}
+
 
 .list {
     display: grid;
@@ -11,6 +9,18 @@
     scrollbar-width: none;
     margin-bottom: 15px;
     position: relative;
+
+    @media screen and (max-width: 960px){
+        grid-template-columns: repeat(7,1fr);
+    }
+
+    @media screen and (max-width: 770px){
+        grid-template-columns: repeat(5,1fr);
+    }
+
+    @media screen and (max-width: 550px){
+        gap:3px;
+    }
 }
 
 .list::-webkit-scrollbar {
@@ -19,14 +29,22 @@
 
 .item {
     object-fit: cover;
+    max-width: 250px;
+
+    @media screen and (max-width: 960px){
+        max-width: 200px;
+    }
+
+    @media screen and (max-width: 720px){
+        max-width: 150px;
+    }
+
+    @media screen and (max-width: 640px){
+        max-width: 120px;
+    }
 }
 
-.scrollbar {
-    height: 24px;
-    width: 100%;
-    max-width: 800px;
-    display: flex;
-}
+
 
 .track {
     position: relative;

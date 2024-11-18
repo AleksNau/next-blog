@@ -1,7 +1,6 @@
 "use client";
 import React, { useContext,useRef } from "react";
 import s from "./ImageSlider.module.scss";
-import { testingInfo } from "../../app/data/testData";
 import {MyContext} from "@/context/MyContext";
 
 const ImageSlider = ({data,title}) => {
@@ -27,7 +26,7 @@ const ImageSlider = ({data,title}) => {
     {data?.map((item, index) => {
           return (
             <div key={index} onClick={()=>handleCardClick(item)}>
-              <img className={s.item} src={item} width={250} alt={`${title}${index}`} />
+              <img className={s.item} src={item} alt={`${title}${index}`} />
             </div>
           );
         })}
