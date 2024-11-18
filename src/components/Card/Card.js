@@ -8,7 +8,7 @@ const Card = ({title, category, desc, item, image="/p1.jpeg"}) => {
     return (
         <div className={s.container}>{ image &&
            ( <div className={s.imageContainer}>
-                <Image className={s.image} src={image} alt={'card'} fill/>
+                <Image className={s.image} src={image} alt={`${title}-card`} fill/>
             </div>)}
             <div className={s.textContainer}>
                 <div className={s.detail}>

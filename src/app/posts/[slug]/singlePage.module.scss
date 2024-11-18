@@ -1,6 +1,3 @@
-.container {
-
-}
 
 .infoContainer {
   display: flex;
@@ -45,6 +42,10 @@
   flex-direction: column;
   gap: 5px;
   color: var(--softTextColor);
+}
+
+.image {
+  object-fit: contain;
 }
 
 .username {
