@@ -1,8 +1,11 @@
 import "./globals.css";
 import "react-quill/dist/quill.snow.css";
+import { Suspense } from 'react';
+import Script from 'next/script';
 import { Golos_Text } from "next/font/google";
 import NavBar from "../components/NavBar/NavBar";
 import Footer from "../components/Footer/Footer";
+import YandexMetrika from "../components/YandexMetrika/YandexMetrika";
 import { ThemeContextProvider } from "@/context/ThemeContext";
 import { MyProvider } from "@/context/MyContext";
 import { getCategoryData } from "@/app/utils/data";
@@ -60,6 +63,25 @@ export default async function RootLayout({ children }) {
             </ThemeContextProvider2>
           </ThemeContextProvider>
         </ClerkProvider>
+        <Script id='yandex-metrika' type="text/javascript" strategy="afterInteractive">
+  { `(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();
+   for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+   k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(98977517, "init", {
+   defer: true,
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   })`}
+</Script>
+<noscript><div><img src="https://mc.yandex.ru/watch/98977517"alt="" /></div></noscript>
+<Suspense fallback={<></>}>
+            <YandexMetrika />
+          </Suspense>
       </body>
     </html>
   );
