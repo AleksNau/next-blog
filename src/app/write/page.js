@@ -11,11 +11,13 @@ import DinamicInput from "@/components/DinamicInput/DinamicInput";
 import {linkValidation, titleValidation} from '@/settings/validation';
 import {quillFormats, quillModules} from "@/app/utils/quil"
 import {handleSubmitFirst} from "@/app/utils/CreatePost"
+import { useRouter } from 'next/navigation'
 const QuillEditor = dynamic(() => import("react-quill"), {ssr: false});
 
 const WritePage = () => {
     const {cat} = useContext(MyContext);
     const {user} = useUser();
+    const router = useRouter()
 
     const [media, setMedia] = useState("");
 
@@ -45,7 +47,11 @@ const WritePage = () => {
     const handleSubmitData = async () => {
         const  data = await getinfo()
 
-       await handleSubmitFirst(data);
+       await handleSubmitFirst(data).then(res => {
+        if(res.status === 200 ){
+            router.push('/')
+        }
+       });
 
     };
 
